@@ -1,0 +1,21 @@
+# Secrets and local auth
+auth.json
+mcp-auth.json
+.env
+.env.*
+
+# Runtime artifacts
+node_modules/
+.DS_Store
+Thumbs.db
+
+# Local database and logs
+opencode.db
+opencode.db-shm
+opencode.db-wal
+log/
+tool-output/
+storage/
+
+# Editor noise
+.vscode/
