@@ -44,6 +44,18 @@ When choosing or explaining a pattern:
 4. Only recommend the pattern if it clearly improves the code or flow.
 5. If the simplest solution is enough, say so clearly.
 
+## Teaching intent
+
+This skill should not only identify patterns.
+It should help the user:
+
+- see the real problem before naming a solution
+- distinguish a classic pattern from a simple refactor or basic code organization
+- detect when no pattern is needed
+- judge the clarity, maintenance, and abstraction cost of introducing a pattern
+
+The goal is better design judgment, not broader pattern vocabulary.
+
 ## Core rule
 
 Do not start from the catalog of patterns.
@@ -55,6 +67,28 @@ Start from:
 3. the simplest viable solution
 
 Only then evaluate whether a pattern helps.
+
+## Pattern reality check
+
+Before recommending a pattern, ask these questions internally:
+
+- is this actually a recurring design problem or just a local code smell?
+- is a pattern solving the problem, or would a simpler refactor solve it?
+- would introducing the pattern improve clarity, or mostly add abstraction?
+- is the user identifying a real need, or trying to force the problem into a familiar label?
+
+If the pattern mainly adds indirection, naming overhead, or premature structure, reject it.
+
+## False-pattern detector
+
+Actively watch for weak moves such as:
+
+- wanting a pattern because it sounds more professional
+- forcing the problem to fit a known pattern name
+- adding interfaces, layers, or abstractions before they are needed
+- turning a readable solution into a more obscure one for architectural neatness
+
+If you detect one of these, say so directly and explain the cost.
 
 ## If User Doesn't Know What Design Patterns Are
 
@@ -92,7 +126,8 @@ Then follow this process:
 1. **Identificar el problema real** - No el patrón, el problema concreto en el código
 2. **Explicar en palabras simples** - Sin jargon técnico
 3. **Comparar con la solución más simple** - Antes de proponer un patrón
-4. **Pedir permiso para dar más detalles** - "¿Quieres que profundice?"
+4. **Evaluar qué se gana y qué se pierde** - Claridad, mantenimiento, flexibilidad, complejidad
+5. **Pedir permiso para dar más detalles** - "¿Quieres que profundice?"
 
 If the answer depends on whether the pattern is already in the code, verify the implementation before teaching it.
 
@@ -123,6 +158,33 @@ Follow learning approach:
 ### Step 6: Simpler alternative
 - What would be the lighter solution if the pattern is unnecessary
 
+### Step 7: Cost of introducing it
+- What clarity, maintenance, or abstraction cost it adds
+- What project conditions would justify paying that cost
+
+## Understanding check
+
+Do not assume that learning the pattern name means the user understood the design decision.
+
+When the topic matters, verify with one light check such as:
+
+- ask what concrete problem the pattern solves here
+- ask whether a pattern is really needed or not
+- ask what simpler alternative they would use instead
+- ask what clarity or simplicity would be lost by introducing the pattern
+
+Use the check that best fits the context and the user's current confusion.
+
+## Recommendation shape
+
+Default to an ending that includes:
+
+- whether a pattern is needed or not
+- the most important real-world impact on clarity, maintenance, or flexibility
+- what would need to change for the pattern to become worth it later
+
+This keeps the conclusion useful and teaches when the answer could change.
+
 ## The 22 Classic Patterns (Reference)
 
 Only show this if user asks for it or already knows basics:
@@ -145,6 +207,8 @@ Chain of Responsibility, Command, Iterator, Mediator, Memento, Observer, State, 
 5. **If pattern adds complexity without clear need, reject it**
 6. **Do not recommend a pattern just because it matches a familiar name**
 7. **Teach the tradeoff, not just the pattern**
+8. **No pattern needed is a valid and often strong conclusion**
+9. **Pattern vocabulary is less important than problem diagnosis**
 
 ## Response guidance
 
@@ -152,3 +216,5 @@ Chain of Responsibility, Command, Iterator, Mediator, Memento, Observer, State, 
 - Keep the explanation tied to the user's problem or learning goal.
 - Use the smallest amount of theory needed to help the user decide well.
 - If no pattern is needed, say that directly.
+- Prefer clarity over architectural elegance.
+- If a pattern hurts readability in this project stage, call that out explicitly.

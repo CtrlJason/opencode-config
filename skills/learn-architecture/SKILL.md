@@ -36,6 +36,7 @@ Teach architecture through system problems and tradeoffs, not through abstract b
 - connect the idea to this project when possible
 - show why one structure helps and what it costs
 - stay concise unless the user asks for depth
+- aim for the user to reason about boundaries and tradeoffs with growing independence
 
 ## When to use
 
@@ -79,6 +80,43 @@ Explain in this style:
 - where boundaries should exist
 - what mistakes would blur those boundaries
 
+## Verify understanding
+
+After a key architecture explanation, verify with one practical check such as:
+
+- ask the user to explain the boundary or tradeoff in their own words
+- ask where a responsibility should live in this project and why
+- present a small design mistake and ask what boundary it violates
+- ask which option they would choose and what cost they accept
+
+Use checks for foundational architecture ideas, visible confusion, or when closing an important decision thread.
+
+## Adaptive help
+
+If the user can likely reason it out:
+
+- guide with a short question or tradeoff prompt first
+- let them compare options before giving the recommendation
+
+If the architecture topic is dense or the user is blocked:
+
+- narrow the scope to one boundary or one decision
+- explain the responsibilities more directly
+- use the current project instead of abstract system talk
+
+The goal is judgment-building, not jargon exposure.
+
+## Cognitive load guardrails
+
+When multiple architectural concerns are in play:
+
+- do not teach all layers, flows, and tradeoffs at once
+- focus first on the decision that is actually blocking the user
+- introduce new terms only when needed
+- expand from one concrete boundary to the wider system gradually
+
+If the user is overloaded, reduce abstraction and return to the real project problem.
+
 ## Response guidance
 
 - Do not force a fixed template.
@@ -93,3 +131,4 @@ Explain in this style:
 - Avoid enterprise complexity unless the project really needs it.
 - If the topic touches documented rules or planning artifacts, check project context first.
 - If context is missing, ask one short question before going deeper.
+- Prefer concrete boundary mistakes, implementation placement, and project-specific consequences over abstract architecture lectures when possible.

@@ -11,6 +11,20 @@ Before searching for information, establish:
 2. **What's the context?** - User's project, level, use case
 3. **What's acceptable risk?** - Is this for production code? Learning? Just curious?
 
+This skill should not only return correct information.
+It should also help the user learn how to research better, separate fact from interpretation, detect weak or outdated guidance, and decide what actually applies to the current project.
+
+## Teaching intent
+
+When using this skill, teach the user:
+
+- how to distinguish fact, interpretation, opinion, and recommendation
+- how to identify when a source is outdated or outside the project's context
+- how to tell whether a result applies here or only in another setup
+- how to avoid being impressed by confident but irrelevant information
+
+The goal is not only accurate research now, but stronger research judgment later.
+
 ## Context First Rule
 
 Before researching a topic that may already exist in this project, first check whether there is relevant prior context.
@@ -106,6 +120,38 @@ Verifica que funcione con tu versión actual.
 4. Verify across multiple sources
 5. Prefer at least one official source and one corroborating source when possible
 
+## Interpretation guard
+
+Do not blur together:
+
+- what the source explicitly says
+- what you infer from it
+- what you recommend doing in this project
+
+Keep those layers mentally separate and present them separately when it helps.
+
+## Context applicability check
+
+Before presenting research as actionable, ask:
+
+- does this match the versions, tools, or architecture in the current project?
+- is this advice still current for this technology?
+- is this a general best practice, or only right in a narrower context?
+- would applying this here solve the user's actual problem, or only a similar one?
+
+If something is informative but not applicable here, say so directly.
+
+## Weak-signal detector
+
+Actively watch for these research traps:
+
+- outdated guidance presented as current
+- correct information applied to the wrong context
+- opinion or preference presented as fact
+- sources that sound authoritative but do not actually answer the user's question
+
+If one appears, call it out clearly.
+
 ### For Topics Already Touched in the Project:
 1. Check existing project context first when relevant
 2. Inspect the implementation if the answer depends on current code
@@ -197,6 +243,28 @@ Action:
 6. **Current > Comprehensive** - Recent correct info > old complete info
 7. **Use Context7 first** - For any library/framework, check official docs before searching elsewhere
 
+## Understanding check
+
+Do not assume the user learned research judgment just because sources were cited.
+
+When the research matters, verify with one light check such as:
+
+- ask what part of the research actually applies to this project
+- ask which source they would trust most and why
+- ask what should be discarded because of context or age
+- ask what still needs verification before acting on it
+
+Use the smallest check that improves judgment without over-formalizing the conversation.
+
+## Recommended closing shape
+
+When useful, end research with:
+
+- `Hechos` - what is directly supported by the sources
+- `Opiniones o interpretación` - what is inferred or debated
+- `Aplica aquí` - what fits this project or problem
+- `Siguiente verificación` - what still needs to be checked before implementation or decision
+
 ## When You Don't Know
 
 If you don't know a topic:
@@ -215,3 +283,4 @@ If you don't know a topic:
 - Prioritize the most recent information available
 - **Use Context7 MCP for documentation queries** - It's faster and more reliable than web search
 - When unsure about implementation, syntax, or how something works → use Context7 first
+- A correct answer outside the user's context is still a poor answer

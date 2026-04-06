@@ -7,6 +7,9 @@ description: Validate domain changes before implementation so feature, refactor,
 
 Use this skill when a change may affect domain behavior, business rules, entity state, persistence rules, feature flow, or planning/documentation artifacts that could distort domain meaning.
 
+This skill should not only protect the domain.
+It should also help the user understand why the rule exists, how it affects implementation quality, and what risks appear when the domain is interpreted incorrectly.
+
 ## When to use
 
 Use this skill when the user is about to work on something like:
@@ -63,6 +66,19 @@ If the task is in docs/planning, also identify whether it alters any of these:
 
 If yes, validate the domain first.
 
+## Teaching intent
+
+When this skill is used, do not stop at "this is the rule".
+
+Also teach:
+
+- why the rule exists in the business or product meaning
+- what implementation decisions it constrains
+- what would likely break if the rule is misunderstood
+- how naming, layering, persistence, and permissions should reflect the real domain meaning
+
+The goal is not only correct validation now, but better domain judgment from the user over time.
+
 ## Workflow
 
 1. Identify the change type: `feat`, `refactor`, `issue`, or `testing`.
@@ -76,6 +92,42 @@ If yes, validate the domain first.
 9. Propose the safest next step.
 10. If the user says they think the work is finished, run a completion check before accepting it.
 
+## Documentation interpretation guard
+
+If a story, epic, backlog item, or other documentation artifact is ambiguous:
+
+1. point to the exact ambiguous phrase or decision
+2. separate documented facts from current inference
+3. ask one short question that resolves the ambiguity if possible
+
+Do not silently fill domain gaps with intuition.
+If there are multiple plausible readings, say so clearly before recommending implementation.
+
+## Implementation quality link
+
+Connect domain validation to implementation quality explicitly:
+
+- naming should reflect the real business action, not a technical shortcut
+- layer placement should match responsibility, not convenience
+- persistence behavior should reflect the true lifecycle of the entity
+- permissions and ownership should match the documented business rule
+- observable behavior in UI/API should match the meaning described in the source of truth
+
+If the implementation idea violates one of these, explain the mismatch directly.
+
+## Understanding check
+
+Do not assume that reading the documentation means the user understood the domain.
+
+For important or risky domain topics, verify understanding with one light check such as:
+
+- ask the user to summarize the domain rule in their own words
+- ask how the rule affects naming, layers, or persistence
+- ask what risk appears if the rule is implemented the wrong way
+- ask the user to distinguish the business action from the technical action
+
+Use the lightest check that helps the user build judgment without turning the flow into bureaucracy.
+
 ## Completion check
 
 When the user says they think they are done, verify:
@@ -88,6 +140,12 @@ When the user says they think they are done, verify:
 - the implementation does not hide a domain mismatch
 - no planning or documentation artifact was rewritten in a way that changes domain meaning without confirmation
 
+Also verify:
+
+- the chosen names still describe the real business action
+- the implementation respects the responsibility of each layer
+- the technical solution did not smuggle in a different domain meaning
+
 If something is off, report it clearly and suggest the smallest fix.
 
 ## Output format
@@ -99,6 +157,8 @@ When this skill is used, return:
 - `Affected entities`
 - `Domain rule to protect`
 - `Source of truth checked`
+- `Implementation impact`
+- `Risk if misunderstood`
 - `Recommended action`
 - `Next step`
 
@@ -110,3 +170,5 @@ When this skill is used, return:
 - Planning artifacts are not safe to edit blindly; they can encode real domain decisions.
 - If the change is ambiguous, ask one short question before deciding.
 - Keep the answer short and practical.
+- Prefer teaching the reason behind the rule over merely stating the rule.
+- If the user can name the rule but cannot explain its implementation impact, keep teaching before moving on.
