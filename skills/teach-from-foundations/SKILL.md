@@ -1,13 +1,16 @@
 ---
 name: teach-from-foundations
-description: Explain any topic from the base, without skipping steps. ALWAYS first understand what the user already knows, handle partial knowledge, and address misconceptions.
+description: Explain any topic from the base, without skipping steps. First understand what the user already knows, adapt to their learning goal, and address misconceptions.
 ---
 
-## CRITICAL: First Step (NEVER SKIP)
+## First Step
 
-Before explaining ANY topic, ALWAYS first understand what the user knows:
+Before explaining a topic, first understand what the user knows and what kind of explanation they need.
+If you already have recent context for this topic, reuse it and only ask for the missing gap.
 
-**Ask something like:**
+Ask only what is needed to calibrate the explanation.
+
+Examples:
 ```
 Antes de explicarte, necesito entender tu nivel:
 - ¿Ya conoces este tema? (sí/no/básico/a medias)
@@ -23,11 +26,21 @@ Antes de explicarte, necesito entender tu nivel:
 - If user has a specific problem, solve that first
 - Never assume prior knowledge
 
+## Core idea
+
+Teach through the user's real problem whenever possible.
+
+- adapt to the user's level and learning goal
+- do not turn every explanation into a lecture
+- explain the reasoning, not just the answer, when that helps build judgment
+- stay concise when the user is already in execution mode
+- use project examples when they clarify the idea
+
 ## Multiple Knowledge Levels
 
 ### Level 1: Complete beginner (nunca lo has visto)
 - Start from absolute zero
-- Use analogies from everyday life
+- Use one brief everyday analogy that clarifies the core idea
 - Define every term
 
 ### Level 2: A medias (conoces algo pero no todo)
@@ -47,6 +60,13 @@ Antes de explicarte, necesito entender tu nivel:
 - Go deeper into how and why
 - Show tradeoffs
 - Compare with alternatives
+
+### Style rules
+- Prefer short explanations with enough development to understand the idea
+- Add one analogy when it helps, not on every paragraph
+- Define new technical terms the first time they appear, in plain language
+- Avoid repeating the same point in multiple sections
+- Do not force a fixed response structure if a simpler explanation works better
 
 ## Detecting and Handling Misconceptions
 
@@ -101,7 +121,7 @@ Address directly:
 
 ## Teaching Order (for technical topics)
 
-When explaining something, follow this order:
+Use this order when it helps, not as a rigid template:
 
 1. **Qué es** - Definition in plain language
 2. **Por qué se creó** - The problem that led to its creation
@@ -123,28 +143,14 @@ When explaining something, follow this order:
 7. **Solve real problems** - Don't teach theory for theory's sake
 8. **Understand before advancing** - If they don't get it, stay on the topic
 9. **Learning > speed** - Taking time to understand is the goal
+10. **Use analogies sparingly** - One clear analogy beats many vague ones
 
-## Default Output Format
+## Response guidance
 
-```
-## Tu nivel
-[Complete beginner / A medias / Confuso / Básico quiere depth]
-
-## Qué necesitas aprender
-[What user wants to know]
-
-## Tu comprensión actual
-[If "a medias" or confused: What exactly they understand vs what not]
-
-## Explicación
-[Start from appropriate level based on above]
-
-## Resumen
-[1-2 sentences, what to remember]
-
-## Siguiente paso
-[Only if base is clear - what to learn next]
-```
+- Do not impose a fixed format on every answer.
+- Use headings only if they make the explanation easier to follow.
+- Prefer a natural explanation over a template.
+- End with the next useful insight only if the base is already clear.
 
 ## Notes
 
@@ -156,3 +162,9 @@ When explaining something, follow this order:
 - If user is new to the topic, start from absolutely zero
 - The goal is understanding, not covering material fast
 - Use the ZPD (Zone of Proximal Development) principle: teach just beyond what they know
+- If you notice a repeated need, suggest creating a new skill only if it would clearly help and ask the user before creating it
+- If the user is actively implementing, stay concise and wait for a blocker instead of turning the session into a lecture
+- Do not over-question; ask only what is necessary to calibrate the explanation
+- Start new topics with a brief analogy or a concrete example when useful, not by default
+- If the user cannot explain the idea back, identify the gap and step back one level instead of pushing forward
+- If one example does not help, switch to a different example type rather than repeating the same one

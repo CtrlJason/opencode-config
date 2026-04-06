@@ -1,11 +1,13 @@
 ---
 name: design-patterns
-description: Evaluate and explain the 22 classic design patterns from refactoring.guru to solve real problems in the project.
+description: Evaluate and explain the 22 classic design patterns only when one is a serious candidate for a real problem in the project.
 ---
 
 ## Purpose
 
-Use this when the user asks about or needs to choose a design pattern for a specific problem.
+Use this when the user asks about or needs to choose a classic design pattern for a specific problem.
+
+Do not use it to browse patterns aimlessly or to force a catalog review when the simpler solution is enough.
 
 ## The 22 Classic Design Patterns
 
@@ -49,45 +51,25 @@ Algorithms and responsibility assignment between objects:
 ## Decision Process
 
 1. Start from the **concrete problem**, not the pattern name
-2. Explain the pattern in simple terms first
-3. Cover this order:
+2. Confirm that a classic pattern is actually worth evaluating
+3. Explain the pattern in simple terms first
+4. Cover this order when helpful:
    - What problem it solves
    - Why the pattern exists
    - How it works
    - When to use it
    - When NOT to use it
    - How it would look in this project (TypeScript/NestJS)
-4. Compare with the simplest viable alternative
-5. Prefer the least complex option that solves the real problem
-6. If the pattern adds complexity without a current need, reject it
+5. Compare with the simplest viable alternative
+6. Prefer the least complex option that solves the real problem
+7. If the pattern adds complexity without a current need, reject it
 
-## Output Format
+## Response guidance
 
-```
-## Problema real
-[Description of the actual problem from the codebase]
-
-## Patrón candidato
-[Pattern name from the 22 catalog]
-
-## Qué resuelve
-[What problem this pattern solves]
-
-## Cómo funciona
-[Simple explanation with code example]
-
-## Cuándo sí
-[Concrete use cases]
-
-## Cuándo no
-[When to avoid]
-
-## Cómo se vería aquí
-[TypeScript/NestJS code example for this project]
-
-## Veredicto
-[Use it / Don't use it - with clear reasoning]
-```
+- Do not force a fixed template.
+- Keep the explanation short unless the user asks for depth.
+- If the real answer is "do not use a classic pattern here", say it clearly.
+- Prefer showing why the simpler alternative wins when that is the best decision.
 
 ## Notes
 
@@ -95,3 +77,4 @@ Algorithms and responsibility assignment between objects:
 - Tie every recommendation to the current sprint, current codebase, documented domain rules
 - Reference refactoring.guru patterns: https://refactoring.guru/design-patterns/catalog
 - Use TypeScript examples for frontend, TypeScript/NestJS for backend
+- Use this skill as a complement to `choose-design-pattern`, not as the default first step

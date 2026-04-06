@@ -1,11 +1,15 @@
 ---
 name: choose-design-pattern
-description: Help user understand and choose design patterns using learning-first approach. ALWAYS start by understanding what the user already knows.
+description: Help the user understand and choose design patterns from the real problem first. Start by understanding what the user already knows and whether a pattern is even needed.
 ---
 
-## CRITICAL: First Question (MUST ASK)
+## First Step
 
-Before ANY pattern explanation, ALWAYS ask:
+Before explaining or recommending a pattern, first understand the user's level and the actual problem.
+
+Ask only what is necessary.
+
+Examples:
 
 ```
 Antes de explicarte algo sobre patrones de diseño, necesito saber:
@@ -15,7 +19,42 @@ Antes de explicarte algo sobre patrones de diseño, necesito saber:
 3. ¿Tienes un problema en el código que quieres resolver?
 ```
 
-DO NOT skip this step. If user is unsure or confused, start from zero.
+If user is unsure or confused, start from zero.
+
+## Conditional Verification Rule
+
+If the user says they already applied the pattern in this project:
+- first check Engram for prior research/context
+- then inspect the relevant project code to verify how it is actually used
+- only after that, explain whether the application is correct or needs adjustment
+
+If the user has not said they already applied it:
+- ask first whether they want theory, a concrete pattern, or help with a code problem
+- do not pull extra context unless it actually matters to the recommendation
+
+If the user is actively implementing and asks about the pattern as part of the current change, keep the answer tied to that code path instead of giving a generic pattern lecture
+
+## Priority Rule
+
+When choosing or explaining a pattern:
+
+1. Check project context first when the pattern may already be in use.
+2. Focus on the real problem the pattern solves.
+3. Compare against the simplest viable alternative.
+4. Only recommend the pattern if it clearly improves the code or flow.
+5. If the simplest solution is enough, say so clearly.
+
+## Core rule
+
+Do not start from the catalog of patterns.
+
+Start from:
+
+1. the concrete problem
+2. the constraints of this project
+3. the simplest viable solution
+
+Only then evaluate whether a pattern helps.
 
 ## If User Doesn't Know What Design Patterns Are
 
@@ -52,7 +91,10 @@ Then follow this process:
 
 1. **Identificar el problema real** - No el patrón, el problema concreto en el código
 2. **Explicar en palabras simples** - Sin jargon técnico
-3. **Pedir permiso para dar más detalles** - "¿Quieres que profundice?"
+3. **Comparar con la solución más simple** - Antes de proponer un patrón
+4. **Pedir permiso para dar más detalles** - "¿Quieres que profundice?"
+
+If the answer depends on whether the pattern is already in the code, verify the implementation before teaching it.
 
 ## If User Asks About a Specific Pattern
 
@@ -78,6 +120,9 @@ Follow learning approach:
 - Clear warnings about over-engineering
 - When it's overkill
 
+### Step 6: Simpler alternative
+- What would be the lighter solution if the pattern is unnecessary
+
 ## The 22 Classic Patterns (Reference)
 
 Only show this if user asks for it or already knows basics:
@@ -98,25 +143,12 @@ Chain of Responsibility, Command, Iterator, Mediator, Memento, Observer, State, 
 3. **Tie to real problems, not abstract theory**
 4. **Prefer simple solutions over patterns**
 5. **If pattern adds complexity without clear need, reject it**
+6. **Do not recommend a pattern just because it matches a familiar name**
+7. **Teach the tradeoff, not just the pattern**
 
-## Output Format (when explaining a specific pattern)
+## Response guidance
 
-```
-## Explicación simple
-[2-3 sentences - no jargon]
-
-## Por qué existe
-[What pain it solves]
-
-## Ejemplo cotidiano
-[Real-world analogy]
-
-## Cuándo usarlo
-[Concrete scenarios]
-
-## Cuándo NO usarlo
-[Warnings]
-
-## Ejemplo de código (minimal)
-[Only if user asks or already understands]
-```
+- Do not force a fixed template.
+- Keep the explanation tied to the user's problem or learning goal.
+- Use the smallest amount of theory needed to help the user decide well.
+- If no pattern is needed, say that directly.

@@ -11,6 +11,21 @@ Before searching for information, establish:
 2. **What's the context?** - User's project, level, use case
 3. **What's acceptable risk?** - Is this for production code? Learning? Just curious?
 
+## Context First Rule
+
+Before researching a topic that may already exist in this project, first check whether there is relevant prior context.
+
+Use this order:
+1. If the user says the topic already exists in their work, check existing context first.
+2. If the user says they have not applied it, do not spend time searching memory for it; research directly if needed.
+3. If the user has not said either way, ask one short clarifying question before researching.
+
+For design patterns and architecture decisions, verify the project implementation first when the question depends on how the code is actually built.
+
+If the user explicitly says a topic is new or not yet applied, research directly instead of searching memory first.
+
+If the user wants a technical explanation, investigate first unless the request is clearly just conversational or purely conceptual.
+
 ## Source Evaluation Criteria
 
 ### 1. Source Types (Priority Order)
@@ -89,6 +104,22 @@ Verifica que funcione con tu versión actual.
 2. If unclear, search for tutorial from established source
 3. For specific problems, check StackOverflow with date filter
 4. Verify across multiple sources
+5. Prefer at least one official source and one corroborating source when possible
+
+### For Topics Already Touched in the Project:
+1. Check existing project context first when relevant
+2. Inspect the implementation if the answer depends on current code
+3. Research externally only to confirm or fill gaps
+4. Explain the result relative to the project's current state
+
+## Source Preference
+
+Prefer a mixed verification style when possible:
+
+- one official source
+- one corroborating source from community or another reputable source
+
+If official documentation exists, use it as the primary anchor.
 
 ### For Concept Explanations:
 1. Academic/technical articles > opinion pieces

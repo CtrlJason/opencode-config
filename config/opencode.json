@@ -37,6 +37,18 @@
       "type": "remote",
       "url": "https://mcp.context7.com/mcp",
       "enabled": true
+    },
+    "git": {
+      "type": "local",
+      "command": [
+        "bun",
+        "x",
+        "@cyanheads/git-mcp-server@latest"
+      ],
+      "environment": {
+        "PATH": "C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\Git\\cmd;C:\\WINDOWS\\System32"
+      },
+      "enabled": true
     }
   }
 }
