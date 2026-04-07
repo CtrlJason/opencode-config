@@ -27,7 +27,7 @@ Hay 3 formas.
 Si quieres dejar casi todo listo con un solo comando en PowerShell:
 
 ```powershell
-powershell -ExecutionPolicy Bypass -Command "& { $tmp = Join-Path $env:TEMP 'opencode-bootstrap.ps1'; Invoke-WebRequest 'https://raw.githubusercontent.com/CtrlJason/opencode-config/main/scripts/bootstrap.ps1' -OutFile $tmp; & $tmp }"
+powershell -NoProfile -ExecutionPolicy Bypass -Command "irm 'https://raw.githubusercontent.com/CtrlJason/opencode-config/main/scripts/bootstrap.ps1' | iex"
 ```
 
 Que hace:
