@@ -57,6 +57,14 @@ $installEngram = Join-Path $RepoPath "scripts\install-engram.ps1"
 $importScript = Join-Path $RepoPath "scripts\import.ps1"
 $doctorScript = Join-Path $RepoPath "scripts\doctor.ps1"
 
+# TODO: workaround temporal para bug de opencode donde {env:USERPROFILE} se expande con
+# backslashes antes del parse JSON, produciendo escapes invalidos como \U, \Y, \b.
+# Cuando sst/opencode PR #14987 sea released, eliminar esta linea y cambiar opencode.json
+# para usar {env:USERPROFILE} directamente.
+$userProfileFwd = $HOME.Replace('\', '/')
+[System.Environment]::SetEnvironmentVariable("USERPROFILE_FWD", $userProfileFwd, "User")
+Write-Host "USERPROFILE_FWD definido como variable de entorno: $userProfileFwd"
+
 & $installOpenCode
 & $installEngram -RepoPath $EngramRepoPath -TargetBinDir $EngramBinDir
 & $importScript -RepoPath $RepoPath -ConfigHome $ConfigHome

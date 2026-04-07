@@ -2,8 +2,11 @@
   "$schema": "https://opencode.ai/config.json",
   "mcp": {
     "engram": {
+      // TODO: workaround temporal — {env:USERPROFILE_FWD} es USERPROFILE con forward slashes.
+      // Bug: opencode expande {env:} antes del parse JSON, causando escapes invalidos (\U, \Y).
+      // Revertir a {env:USERPROFILE}\\bin\\engram.exe cuando sst/opencode PR #14987 sea released.
       "command": [
-        "{env:USERPROFILE}\\bin\\engram.exe",
+        "{env:USERPROFILE_FWD}/bin/engram.exe",
         "mcp",
         "--tools=agent"
       ],
@@ -45,9 +48,8 @@
         "x",
         "@cyanheads/git-mcp-server@latest"
       ],
-      "environment": {
-        "PATH": "{env:USERPROFILE}\\scoop\\shims;{env:PATH}"
-      },
+      // TODO: workaround temporal — se elimino el bloque environment con {env:PATH} por el mismo
+      // bug de expansion de backslashes. Evaluar si es necesario restaurarlo cuando PR #14987 sea released.
       "enabled": true
     }
   }
