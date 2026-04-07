@@ -25,7 +25,7 @@ New-Item -ItemType Directory -Force (Join-Path $repo "agents") | Out-Null
 
 Copy-Item (Join-Path $source "opencode.json") (Join-Path $configDir "opencode.json") -Force
 
-foreach ($name in @("package.json")) {
+foreach ($name in @("package.json", "AGENTS.md")) {
     $from = Join-Path $source $name
     $to = Join-Path $repo $name
 

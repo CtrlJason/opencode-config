@@ -25,6 +25,15 @@ When using this skill, teach the user:
 
 The goal is not only accurate research now, but stronger research judgment later.
 
+## Learning-style adaptation
+
+When the user is learning a new tool or library:
+
+- do not assume they can infer syntax or API shape without docs
+- use verified documentation to support small, teachable examples
+- explain what part of the docs matters and why
+- connect the docs back to the user's current task in parts, not as one giant answer
+
 ## Context First Rule
 
 Before researching a topic that may already exist in this project, first check whether there is relevant prior context.
@@ -39,6 +48,8 @@ For design patterns and architecture decisions, verify the project implementatio
 If the user explicitly says a topic is new or not yet applied, research directly instead of searching memory first.
 
 If the user wants a technical explanation, investigate first unless the request is clearly just conversational or purely conceptual.
+
+If the user is learning a new library or framework from zero, researching first is usually required before giving code or implementation advice.
 
 ## Source Evaluation Criteria
 
@@ -264,6 +275,10 @@ When useful, end research with:
 - `Opiniones o interpretación` - what is inferred or debated
 - `Aplica aquí` - what fits this project or problem
 - `Siguiente verificación` - what still needs to be checked before implementation or decision
+
+When the user is also learning, it can help to add:
+
+- `Cómo leer esto` - what clue in the docs or source should train the user's eye next time
 
 ## When You Don't Know
 

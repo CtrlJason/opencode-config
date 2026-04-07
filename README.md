@@ -5,6 +5,7 @@ Backup privado para mi configuracion de OpenCode.
 ## Que guarda
 
 - `config/opencode.json`
+- `AGENTS.md`
 - `package.json`
 - `plugins/`
 - `skills/`
@@ -189,6 +190,8 @@ Ambos tests usan una raiz temporal y la eliminan si todo sale bien. Si algo fall
 
 - `commands/export-opencode.md`: exporta la config activa al repo usando `$HOME\opencode-config`
 - `commands/import-opencode.md`: restaura la config activa desde el repo usando `$HOME\opencode-config`
+
+`AGENTS.md` tambien forma parte del backup y debe mantenerse versionado en este repo.
 
 ## Pasos manuales post-bootstrap
 

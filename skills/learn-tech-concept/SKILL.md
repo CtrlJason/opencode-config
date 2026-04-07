@@ -39,6 +39,18 @@ Teach the mental model first, then the syntax or API.
 - prefer understanding over listing features
 - aim for the user to be able to explain, choose, and use the concept with judgment
 
+## Learning-style adaptation
+
+Adapt to the user's current learning pattern when it is known.
+
+In particular:
+
+- use a real error or failure as the entry point when that helps the user learn faster
+- prioritize: what it is, why it exists, how it works, and what applies here
+- do not dump code early
+- if the technology is new to the user, code examples may be necessary, but keep them minimal and explain them part by part
+- if the user already knows the language or building blocks, prefer explanation and reasoning over writing the solution for them
+
 ## Teaching paths
 
 ### For a library or framework
@@ -87,6 +99,8 @@ Keep it focused on:
 - the smallest working example
 - the most common pitfall
 - how it applies to their actual task
+
+If the API or syntax is unfamiliar to the user, rely on documentation-backed examples rather than expecting them to infer methods they have never seen.
 
 ## Runtime signals as learning input
 
@@ -173,6 +187,7 @@ If too many pieces are new, teach in layers and reconnect them gradually.
 - Use minimal code examples.
 - Distinguish clearly between concept, syntax, and behavior.
 - If the tool has official docs available, rely on verified behavior instead of guessing.
+- For new libraries or frameworks, explain code in small pieces instead of presenting a large final block.
 
 ## Notes
 
