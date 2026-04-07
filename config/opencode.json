@@ -3,7 +3,7 @@
   "mcp": {
     "engram": {
       "command": [
-        "C:\\Users\\YeisonDavidMosqueraM\\bin\\engram.exe",
+        "{env:USERPROFILE}\\bin\\engram.exe",
         "mcp",
         "--tools=agent"
       ],
@@ -46,7 +46,7 @@
         "@cyanheads/git-mcp-server@latest"
       ],
       "environment": {
-        "PATH": "C:\\Users\\YeisonDavidMosqueraM\\scoop\\shims;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\Git\\cmd;C:\\WINDOWS\\System32"
+        "PATH": "{env:USERPROFILE}\\scoop\\shims;{env:PATH}"
       },
       "enabled": true
     }

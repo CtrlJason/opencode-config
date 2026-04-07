@@ -5,6 +5,7 @@ Backup privado para mi configuracion de OpenCode.
 ## Que guarda
 
 - `config/opencode.json`
+- `package.json`
 - `plugins/`
 - `skills/`
 - `commands/`
@@ -19,7 +20,33 @@ Backup privado para mi configuracion de OpenCode.
 
 ## Restaurar en una maquina nueva
 
-Hay 2 formas.
+Hay 3 formas.
+
+### Opcion 0: bootstrap automatico desde una URL
+
+Si quieres dejar casi todo listo con un solo comando en PowerShell:
+
+```powershell
+powershell -ExecutionPolicy Bypass -Command "& { $tmp = Join-Path $env:TEMP 'opencode-bootstrap.ps1'; Invoke-WebRequest 'https://raw.githubusercontent.com/CtrlJason/opencode-config/main/scripts/bootstrap.ps1' -OutFile $tmp; & $tmp }"
+```
+
+Que hace:
+
+1. verifica que `git` exista
+2. clona o actualiza `~/opencode-config`
+3. instala OpenCode si no existe
+4. clona o actualiza `~/engram`
+5. instala Engram si no existe
+6. importa esta config hacia `~/.config/opencode`
+7. corre un `doctor` final
+
+Tambien acepta rutas alternativas para pruebas aisladas, sin tocar tu config real.
+
+Que no hace:
+
+- no autentica providers automaticamente
+- no corre OAuth de Notion automaticamente
+- no crea ni rellena `OPENCODE_POSTGRES_URL`
 
 ### Opcion 1: import normal a las rutas estandar
 
@@ -63,7 +90,7 @@ La configuracion usa `{env:OPENCODE_POSTGRES_URL}` para no subir la cadena de co
 - tipo: local
 - instalacion: desde su repo oficial
 - repo: `https://github.com/gentleman-programming/engram`
-- nota: requiere binario local y luego `engram setup opencode`
+- nota: la config usa `{env:USERPROFILE}\bin\engram.exe` en Windows para evitar fijar un usuario concreto; el plugin tambien intenta resolver automaticamente el binario desde `ENGRAM_BIN`, `PATH` o la carpeta `bin` del home
 
 ### Notion
 
@@ -131,12 +158,49 @@ Eso significa:
 
 ## Flujo recomendado
 
+- `bootstrap.ps1`: prepara una maquina nueva con un solo comando
+- `install-opencode.ps1`: instala OpenCode si falta
+- `install-engram.ps1`: clona/actualiza Engram e instala el binario en `~/bin`
+- `doctor.ps1`: revisa el estado del setup local
 - `export.ps1`: sincroniza desde `~/.config/opencode` al repo
 - `import.ps1`: restaura desde el repo hacia `~/.config/opencode`
 - `use-repo-directly.ps1`: hace que OpenCode use el repo clonado como config nativa
+- `test-bootstrap.ps1`: prueba el bootstrap dentro de una raiz temporal
+- `test-roundtrip.ps1`: prueba import/export en una raiz temporal
+
+## Validacion local antes de hacer push
+
+Puedes validar el flujo sin tocar tu setup real:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\test-roundtrip.ps1
+powershell -ExecutionPolicy Bypass -File .\scripts\test-bootstrap.ps1
+```
+
+Ambos tests usan una raiz temporal y la eliminan si todo sale bien. Si algo falla, dejan la ruta para inspeccion.
 
 ## Recomendacion practica
 
 - usa `import.ps1` cuando montes una maquina nueva
 - usa `export.ps1` cuando hagas cambios a tu config, skills, commands o plugins
 - no subas secretos ni auth tokens
+
+## Comandos utiles dentro de OpenCode
+
+- `commands/export-opencode.md`: exporta la config activa al repo usando `$HOME\opencode-config`
+- `commands/import-opencode.md`: restaura la config activa desde el repo usando `$HOME\opencode-config`
+
+## Pasos manuales post-bootstrap
+
+Despues del bootstrap o de un import en una maquina nueva, lo normal es correr:
+
+```powershell
+opencode auth login
+opencode mcp auth notion
+```
+
+Y si usaras Postgres:
+
+```powershell
+$env:OPENCODE_POSTGRES_URL = "postgresql://..."
+```
