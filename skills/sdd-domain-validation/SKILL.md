@@ -79,14 +79,6 @@ Also teach:
 
 The goal is not only correct validation now, but better domain judgment from the user over time.
 
-## Project Context Check
-
-Before validating domain, check the current project state in the **Gestor de proyectos**:
-- **Projects DB**: https://www.notion.so/f35d29f663a4835c90e401d27d9922ed
-- Read: Estado, Fase del proyecto, Prioridad
-- Use to understand current phase (Análisis, Diseño, Desarrollo, etc.) and adjust validation scope.
-- Access via: `notion-search` (project name) → `notion-fetch` (page ID).
-
 ## Workflow
 
 1. Identify the change type: `feat`, `refactor`, `issue`, or `testing`.

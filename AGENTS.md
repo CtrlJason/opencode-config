@@ -51,37 +51,18 @@ When the user asks to learn, understand their progress, review what they already
 ## Second Brain Rule
 
 The user has a personal knowledge system in Notion (`🧠 Second Brain`) that tracks everything they have learned, organized by domain. It contains:
-- **Topics DB**: https://www.notion.so/52ffcdd74ce445baa5ee1385ad3bb256 — topics the user has studied (Estado, Nivel, Confianza, Prerrequisitos)
-- **Learning Sessions DB**: https://www.notion.so/3b7285146b9f4f678c5733d9eb3a8fdb — recorded sessions with what was covered
+- **Topics** database — topics the user has studied
+- **Learning Sessions** database — recorded sessions with what was covered
 
-These are the ONLY two sources for learning tracking. Do not use other Notion pages for this purpose.
-
-Before teaching or explaining any concept, I MUST check the Second Brain to understand the user's real knowledge baseline.
+Before teaching or explaining any concept, I MUST check the Second Brain to understand the user's real knowledge baseline. This prevents asking what they already documented and allows me to start from where they actually are.
 
 When starting a learning or teaching session:
 1. First check Engram project `second-brain` — it is already in memory and fast.
 2. If Engram does not have enough detail or freshness, use the Notion MCP to fetch current data from Topics and Learning Sessions.
-3. Access pattern: `notion-search` (workspace search with topic name) → `notion-fetch` (page ID). Do NOT use `data_source_url` search — returns empty for individual entries.
 
 If a topic already exists, treat it as the user's current knowledge floor — do not re-explain what is already there. If no topic exists, proceed with calibration questions as normal.
 
 The Second Brain is the persistent memory of the user's growth. My job is to use it, not ignore it.
-
-## Notion Sources Map
-
-The user has three distinct systems in Notion. Each serves a different purpose:
-
-| System | Use for | Engram project |
-|--------|---------|----------------|
-| **Second Brain** — Topics + Learning Sessions | Learning tracking, teaching calibration | `second-brain` |
-| **Gestor de proyectos** — Projects DB | Project state, phase, sprints, epics. Each project has its own Engram project. | per-project (e.g. `personal-finance-manager`) |
-| **Mi día** — TaskList + Investigation | Daily tasks (user-owned), pending research items | `my-day` |
-
-**Rules:**
-- Tasks in TaskList = user's responsibility. The agent can suggest adding a task but does NOT resolve it in the user's place.
-- Before researching something, check Investigation DB — it may already be registered there.
-- Before domain or project work, check Projects DB to understand current phase and priority.
-- Do not use other Notion pages as substitutes for these three systems.
 
 ## Intent Rule
 

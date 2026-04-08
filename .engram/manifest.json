@@ -32,6 +32,14 @@
       "sessions": 5,
       "memories": 8,
       "prompts": 1
+    },
+    {
+      "id": "f5404e3f",
+      "created_by": "YeisonDavidMosqueraM",
+      "created_at": "2026-04-08T20:59:11Z",
+      "sessions": 1,
+      "memories": 6,
+      "prompts": 3
     }
   ]
 }

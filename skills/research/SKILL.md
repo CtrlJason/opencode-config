@@ -40,16 +40,6 @@ Before researching a topic that may already exist in this project, first check w
 
 If the user is researching in order to learn, first check `Second Brain` context in Engram project `second-brain`. Prioritize both `Learning Sessions` and `Topics` to understand the user's current baseline, vocabulary, and likely gaps before deciding how much explanation or documentation scaffolding is needed.
 
-For current real-time learning state, access Notion directly (ONLY two sources for learning tracking):
-- **Topics DB**: https://www.notion.so/52ffcdd74ce445baa5ee1385ad3bb256 — Estado, Nivel, Confianza, Prerrequisitos
-- **Learning Sessions DB**: https://www.notion.so/3b7285146b9f4f678c5733d9eb3a8fdb — Qué aprendí, Tipo, Fecha
-Access via: `notion-search` (workspace search with topic name) → `notion-fetch` (page ID). Do NOT use `data_source_url` search.
-
-Also check the **Investigation DB** (Mi día) before starting research:
-- **Investigation DB**: https://www.notion.so/7a0d29f663a4827a9254016f3da53a5f
-- If the topic is already there with Estado = "Pendiente" or "En progreso", use that as the starting point.
-- If the research is new, suggest adding it to Investigation DB so the user can track it.
-
 Use this order:
 1. If the user says the topic already exists in their work, check existing context first.
 2. If the user says they have not applied it, do not spend time searching memory for it; research directly if needed.
