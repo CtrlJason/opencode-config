@@ -16,6 +16,14 @@
       "sessions": 0,
       "memories": 1,
       "prompts": 0
+    },
+    {
+      "id": "09c24e56",
+      "created_by": "guini",
+      "created_at": "2026-04-08T02:36:59Z",
+      "sessions": 1,
+      "memories": 1,
+      "prompts": 1
     }
   ]
 }
