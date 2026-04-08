@@ -9,13 +9,14 @@ Use this skill when the user wants to understand architecture concepts, module b
 
 ## First Step
 
-Before explaining architecture, first understand:
+Before explaining architecture, first check `Second Brain` context in Engram project `second-brain`. Use both `Learning Sessions` and `Topics` to see what architectural language, examples, and gaps are already part of the user's trajectory. If that conflicts with a generic prior assumption, prefer `Second Brain`.
 
-- what the user already knows
+If no relevant `Second Brain` context exists, proceed with normal calibration.
+
+Once you have the baseline, ask only what is necessary to fill the remaining gap:
+
 - what system or problem they are trying to understand
 - whether they want fundamentals, a project-specific explanation, or a decision analysis
-
-Ask only what is necessary.
 
 Examples:
 
@@ -132,3 +133,4 @@ If the user is overloaded, reduce abstraction and return to the real project pro
 - If the topic touches documented rules or planning artifacts, check project context first.
 - If context is missing, ask one short question before going deeper.
 - Prefer concrete boundary mistakes, implementation placement, and project-specific consequences over abstract architecture lectures when possible.
+- When an architectural idea, tradeoff, or boundary becomes part of the user's durable understanding, save that context into Engram project `second-brain`.

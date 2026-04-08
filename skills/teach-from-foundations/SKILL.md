@@ -5,10 +5,11 @@ description: Explain any topic from the base, without skipping steps. First unde
 
 ## First Step
 
-Before explaining a topic, first understand what the user knows and what kind of explanation they need.
-If you already have recent context for this topic, reuse it and only ask for the missing gap.
+Before explaining any topic, first check `Second Brain` context in Engram project `second-brain`. Use both `Learning Sessions` and `Topics` to establish what the user already knows. If relevant context exists, use it as the knowledge floor and ask only about the remaining gap. If `Second Brain` conflicts with a generic assumption about the user's level, prefer `Second Brain`.
 
-Ask only what is needed to calibrate the explanation.
+If no relevant `Second Brain` context exists, calibrate with the questions below.
+
+Ask only what is needed to fill the gap.
 
 Examples:
 ```
@@ -266,6 +267,7 @@ Use this order when it helps, not as a rigid template:
 ## Notes
 
 - This applies to ANY topic: patterns, libraries, concepts, architecture
+- For meaningful learning progress, save durable discoveries back into Engram project `second-brain` so future teaching starts from the user's real trajectory
 - If user says "no entiendo", don't add more theory - simplify or go back
 - If user says "algo a medias", ask specific what part
 - If user has misconception, address WHY it's wrong, don't just correct

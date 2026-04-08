@@ -59,7 +59,7 @@ Algorithms and responsibility assignment between objects:
    - How it works
    - When to use it
    - When NOT to use it
-   - How it would look in this project (TypeScript/NestJS)
+   - How it would look in practice with a minimal example
 5. Compare with the simplest viable alternative
 6. Prefer the least complex option that solves the real problem
 7. If the pattern adds complexity without a current need, reject it

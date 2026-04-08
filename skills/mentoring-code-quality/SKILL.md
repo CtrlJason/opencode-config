@@ -10,6 +10,10 @@ Use this skill when the user needs mentoring around code quality, implementation
 This skill is not only for finding flaws.
 It should help the user write clearer code, make stronger technical decisions, notice risks earlier, and improve the way they work over time.
 
+## First Step
+
+Before mentoring, check `Second Brain` context in Engram project `second-brain`. Use both `Learning Sessions` and `Topics` to understand what the user already knows about code quality, design, and engineering habits. If relevant context exists, calibrate the depth and tone from there — do not repeat lessons already internalized. If no relevant context exists, assess from the current work directly.
+
 ## When to use
 
 Use this skill when:
@@ -132,11 +136,11 @@ Use the smallest check that strengthens judgment.
 
 When useful, structure the mentoring output around:
 
-- `Fortalezas` - what is genuinely good
-- `Huecos` - what still needs improvement
-- `Riesgo principal` - the most important current risk
-- `Siguiente mejora` - the next best growth step
-- `Regla reusable` - the principle that should transfer to future work
+- `Strengths` - what is genuinely good
+- `Gaps` - what still needs improvement
+- `Main risk` - the most important current risk
+- `Next improvement` - the next best growth step
+- `Reusable rule` - the principle that should transfer to future work
 
 Do not force this shape when a simpler answer works better.
 

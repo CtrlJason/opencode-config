@@ -9,14 +9,15 @@ Use this skill when the user wants to understand a programming language concept,
 
 ## First Step
 
-Before explaining, first understand:
+Before explaining, first check `Second Brain` context in Engram project `second-brain`. Use both `Learning Sessions` and `Topics` to estimate prior exposure, vocabulary, and likely gaps. If `Second Brain` context conflicts with a generic prior assumption about the user's level, prefer `Second Brain`.
 
-- what the user already knows
+If no relevant `Second Brain` context exists, proceed with normal calibration.
+
+Once you have the baseline, ask only what is necessary to fill the remaining gap:
+
 - whether the topic is a language, framework, library, or tool
 - whether they want conceptual understanding, practical usage, or both
 - what part is confusing
-
-Ask only what is necessary.
 
 Examples:
 
@@ -197,3 +198,4 @@ If too many pieces are new, teach in layers and reconnect them gradually.
 - If the user is confused, simplify the model before adding more examples.
 - Prefer project-grounded usage and error analysis over extra theory when the user needs better technical judgment.
 - Console errors, stack traces, and runtime warnings can be teaching material when used to reveal how the system actually behaves.
+- When a meaningful concept becomes understood or a learning gap is clarified, save that durable learning context into Engram project `second-brain`.

@@ -92,32 +92,32 @@ If you detect one of these, say so directly and explain the cost.
 
 ## If User Doesn't Know What Design Patterns Are
 
-Start from absolute basics:
+Start from absolute basics. Adapt delivery language to the user.
 
-### ¿Qué es un patrón de diseño?
+### What is a design pattern?
 
-Imagina que tienes una colección de recetas de cocina. No son reglas estrictas, pero son soluciones probadas que funcionan bien para ciertos tipos de platos.
+Think of it like a recipe book for cooking. The recipes are not strict rules, but proven solutions that work well for specific types of problems.
 
-Los patrones de diseño son igual, pero para programar. Son soluciones típicas a problemas típicos que los desarrolladores han descubierto a lo largo de décadas.
+Design patterns are the same, but for programming. They are typical solutions to typical problems that developers have discovered over decades.
 
-**No son:**
-- Reglas obligatorias
-- Código listo para copiar
-- Algo que "debes" usar siempre
+**They are NOT:**
+- Mandatory rules
+- Code ready to copy and paste
+- Something you must always use
 
-**Son:**
-- Plantillas de solución
-- Maneras de pensar sobre problemas
-- Herramientas para cuando las necesitas
+**They ARE:**
+- Solution templates
+- Ways to think about problems
+- Tools you reach for when the situation calls for them
 
-### Ejemplo simple
+### Simple example
 
-Si tienes una función muy larga que hace muchas cosas, ¿qué haces?
+If you have a very long function that does too many things, what do you do?
 
-**Sin patrón**: Dejas todo ahí porque funciona
-**Con patrón**: Aplicas "Extract Method" para dividirla en partes
+**Without a pattern**: Leave it there because it works
+**With a pattern**: Apply "Extract Method" to split it into focused parts
 
-Ese "Extract Method" es un refactoring, no un pattern clásico, pero la idea es la misma: cuando identificas un problema, existe una solución conocida.
+"Extract Method" is a refactoring, not a classic GoF pattern, but the idea is the same: when you identify a recurring problem, a known solution likely exists.
 
 ## If User HAS a Specific Problem
 

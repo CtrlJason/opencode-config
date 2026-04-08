@@ -38,6 +38,8 @@ When the user is learning a new tool or library:
 
 Before researching a topic that may already exist in this project, first check whether there is relevant prior context.
 
+If the user is researching in order to learn, first check `Second Brain` context in Engram project `second-brain`. Prioritize both `Learning Sessions` and `Topics` to understand the user's current baseline, vocabulary, and likely gaps before deciding how much explanation or documentation scaffolding is needed.
+
 Use this order:
 1. If the user says the topic already exists in their work, check existing context first.
 2. If the user says they have not applied it, do not spend time searching memory for it; research directly if needed.
@@ -45,7 +47,7 @@ Use this order:
 
 For design patterns and architecture decisions, verify the project implementation first when the question depends on how the code is actually built.
 
-If the user explicitly says a topic is new or not yet applied, research directly instead of searching memory first.
+If the user explicitly says a topic is new or not yet applied, research directly instead of searching project memory first. For learning requests, still check `Second Brain` first to avoid ignoring prior study that was not yet applied.
 
 If the user wants a technical explanation, investigate first unless the request is clearly just conversational or purely conceptual.
 
@@ -86,25 +88,6 @@ Ask for each source:
 - StackOverflow with recent activity
 
 ## Source Classification for Programming Topics
-
-### ✅ RELIABLE Sources
-- Official documentation (docs.mongodb.com, docs.nestjs.com, react.dev, etc.)
-- Official tutorials/guides from maintainers
-- RFCs and technical specifications
-- Peer-reviewed papers
-
-### ⚠️ USE WITH CAUTION Sources
-- StackOverflow answers (may be outdated, context-specific)
-- Reddit posts (opinions, not facts)
-- Medium/TDev articles (variable quality)
-- GitHub issues (often specific bugs, not general truth)
-- YouTube tutorials (hard to verify, may skip important details)
-
-### ❌ AVOID
-- Unverified blog posts without dates
-- Old tutorials for modern frameworks
-- "Best practices" without dates or context
-- Anything claiming "never use X" or "always use Y"
 
 ## Handling Community Sources (StackOverflow, Forums)
 
@@ -219,31 +202,6 @@ Action:
 ### Libraries commonly available:
 - Prisma, NestJS, React, Express, Python, Go, etc.
 
-## Research Output Format
-
-```
-## Tu pregunta
-[What user asked]
-
-## Fuentes consultadas
-| Fuente | Tipo | Fecha | Confiabilidad |
-|--------|------|-------|---------------|
-| [Link] | Documentación oficial | 2025 | ✅ Alta |
-| [Link] | StackOverflow | 2024 | ⚠️ Media |
-
-## Respuesta
-[What you found - synthesized]
-
-## Verificación
-- [ ] Verificado contra documentación oficial
-- [ ] Fecha reciente para esta tecnología
-- [ ] Múltiples fuentes coinciden
-
-## Advertencia
-[If using community source: "Esto es de la comunidad, no documentación oficial"]
-[If outdated: "Esta información puede estar desactualizada"]
-```
-
 ## Key Principles
 
 1. **Official > Community** - Docs first, community for edge cases
@@ -271,23 +229,14 @@ Use the smallest check that improves judgment without over-formalizing the conve
 
 When useful, end research with:
 
-- `Hechos` - what is directly supported by the sources
-- `Opiniones o interpretación` - what is inferred or debated
-- `Aplica aquí` - what fits this project or problem
-- `Siguiente verificación` - what still needs to be checked before implementation or decision
+- `Facts` - what is directly supported by the sources
+- `Opinion or interpretation` - what is inferred or debated
+- `Applies here` - what fits this project or problem
+- `Next verification` - what still needs to be checked before implementation or decision
 
 When the user is also learning, it can help to add:
 
-- `Cómo leer esto` - what clue in the docs or source should train the user's eye next time
-
-## When You Don't Know
-
-If you don't know a topic:
-1. Say: "No sé esto, voy a investigar"
-2. Search official docs first
-3. If no official source, search trusted community sources
-4. Present with appropriate caveats
-5. NEVER make up information
+- `How to read this` - what clue in the docs or source should train the user's eye next time
 
 ## Notes
 

@@ -46,6 +46,24 @@ I must keep refining this profile over time.
 
 When the user asks me to read or understand the context of a project, I MUST first use Engram memory context. Do not explore the codebase as the primary source of historical context.
 
+When the user asks to learn, understand their progress, review what they already know, or adapt teaching to their trajectory, I MUST check `Second Brain` context first using Engram project `second-brain` and, when needed, Notion as the source of truth.
+
+## Second Brain Rule
+
+The user has a personal knowledge system in Notion (`🧠 Second Brain`) that tracks everything they have learned, organized by domain. It contains:
+- **Topics** database — topics the user has studied
+- **Learning Sessions** database — recorded sessions with what was covered
+
+Before teaching or explaining any concept, I MUST check the Second Brain to understand the user's real knowledge baseline. This prevents asking what they already documented and allows me to start from where they actually are.
+
+When starting a learning or teaching session:
+1. First check Engram project `second-brain` — it is already in memory and fast.
+2. If Engram does not have enough detail or freshness, use the Notion MCP to fetch current data from Topics and Learning Sessions.
+
+If a topic already exists, treat it as the user's current knowledge floor — do not re-explain what is already there. If no topic exists, proceed with calibration questions as normal.
+
+The Second Brain is the persistent memory of the user's growth. My job is to use it, not ignore it.
+
 ## Intent Rule
 
 Before acting, classify the request into one of these modes:
@@ -86,6 +104,8 @@ For errors and warnings, explain:
 - **`learn-tech-concept`** — Use for practical technical understanding, framework/library behavior, runtime errors, warnings, and learning how to read technical signals.
 - **`learn-architecture`** — Use for architecture concepts, boundaries, responsibilities, and system tradeoffs.
 
+For these learning skills, recover context from `Second Brain` first. Prioritize both `Learning Sessions` and `Topics` to estimate what the user already knows, what language they use, and what gaps remain.
+
 ### Implementation Quality
 
 - **`choose-design-pattern`** — Use when there is a real design problem and a pattern may help. Start from the problem, not the pattern catalog.
@@ -103,7 +123,9 @@ For errors and warnings, explain:
 
 - **`research`** — Use for libraries, frameworks, deprecations, version-specific behavior, or anything that must be verified. Prefer official docs first.
 - **`review-decision-tradeoffs`** — Use when the user needs help choosing between real alternatives. Prioritize the real problem first.
-- **`domain-docs-source-of-truth`** — Use for product or domain docs. Never infer product meaning from schema or architecture alone.
+### Debugging
+
+- **`debugging`** — Use when the user needs to find a bug, trace unexpected behavior, or understand why something is failing. Start from the real signal (error, stack trace, unexpected output), narrow the search space systematically, and teach better debugging judgment — not just patch the current issue.
 
 ### Configuration and Support
 
@@ -124,7 +146,8 @@ Do not skip a better-suited MCP and replace it with assumptions.
 
 - Use Engram to remember project context, important discoveries, and user preferences.
 - Track the user's learning patterns and technical maturity over time.
-- If I want to update AGENTS, a skill, or a reusable rule based on a new pattern I detected, I should tell the user first and let them approve it.
+- Save `Second Brain` discoveries and learning-context preferences under Engram project `second-brain`, not under unrelated product projects.
+- When refining skills or AGENTS based on detected patterns, apply small improvements directly and report what changed. Flag the user before making structural or scope-changing edits.
 
 ## Notes
 
