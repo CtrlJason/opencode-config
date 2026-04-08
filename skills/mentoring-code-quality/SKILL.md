@@ -14,6 +14,16 @@ It should help the user write clearer code, make stronger technical decisions, n
 
 Before mentoring, check `Second Brain` context in Engram project `second-brain`. Use both `Learning Sessions` and `Topics` to understand what the user already knows about code quality, design, and engineering habits. If relevant context exists, calibrate the depth and tone from there — do not repeat lessons already internalized. If no relevant context exists, assess from the current work directly.
 
+For current real-time learning state, access Notion directly (ONLY two sources for learning tracking):
+- **Topics DB**: https://www.notion.so/52ffcdd74ce445baa5ee1385ad3bb256 — Estado, Nivel, Confianza, Prerrequisitos
+- **Learning Sessions DB**: https://www.notion.so/3b7285146b9f4f678c5733d9eb3a8fdb — Qué aprendí, Tipo, Fecha
+Access via: `notion-search` (workspace search with topic name) → `notion-fetch` (page ID). Do NOT use `data_source_url` search.
+
+When mentoring surfaces actions the user must take manually (a refactor they need to do themselves, a habit to reinforce, a review to run):
+- Suggest adding it to **TaskList** in Mi día: https://www.notion.so/184d29f663a482188d2d0178db90de7b
+- Use Contexto = `🏗️ Projects` for project-related tasks.
+- The agent suggests — the user decides. Never add tasks for things the agent can resolve itself.
+
 ## When to use
 
 Use this skill when:

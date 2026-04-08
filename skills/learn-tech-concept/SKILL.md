@@ -11,6 +11,11 @@ Use this skill when the user wants to understand a programming language concept,
 
 Before explaining, first check `Second Brain` context in Engram project `second-brain`. Use both `Learning Sessions` and `Topics` to estimate prior exposure, vocabulary, and likely gaps. If `Second Brain` context conflicts with a generic prior assumption about the user's level, prefer `Second Brain`.
 
+For current real-time learning state, access Notion directly (ONLY two sources for learning tracking):
+- **Topics DB**: https://www.notion.so/52ffcdd74ce445baa5ee1385ad3bb256 — Estado, Nivel, Confianza, Prerrequisitos
+- **Learning Sessions DB**: https://www.notion.so/3b7285146b9f4f678c5733d9eb3a8fdb — Qué aprendí, Tipo, Fecha
+Access via: `notion-search` (workspace search with topic name) → `notion-fetch` (page ID). Do NOT use `data_source_url` search.
+
 If no relevant `Second Brain` context exists, proceed with normal calibration.
 
 Once you have the baseline, ask only what is necessary to fill the remaining gap:
