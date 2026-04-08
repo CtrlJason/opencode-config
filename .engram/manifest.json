@@ -8,6 +8,14 @@
       "sessions": 17,
       "memories": 146,
       "prompts": 304
+    },
+    {
+      "id": "cb29ef15",
+      "created_by": "guini",
+      "created_at": "2026-04-08T02:30:19Z",
+      "sessions": 0,
+      "memories": 1,
+      "prompts": 0
     }
   ]
 }
