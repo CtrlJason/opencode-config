@@ -46,3 +46,14 @@ foreach ($name in @("plugins", "skills", "commands", "agents")) {
 }
 
 Write-Host "Import completado en $target"
+
+# Import Engram memories from repo
+$engramDir = Join-Path $repo ".engram"
+if (Test-Path $engramDir) {
+    Push-Location $repo
+    engram sync --import
+    Pop-Location
+    Write-Host "Engram memories imported from $engramDir"
+} else {
+    Write-Host "No Engram chunks found in $engramDir — skipping memory import"
+}

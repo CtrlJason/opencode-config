@@ -48,3 +48,9 @@ foreach ($name in @("plugins", "skills", "commands", "agents")) {
 }
 
 Write-Host "Export completado en $repo"
+
+# Sync Engram memories to repo
+Push-Location $repo
+engram sync --all
+Pop-Location
+Write-Host "Engram memories synced to $repo/.engram"

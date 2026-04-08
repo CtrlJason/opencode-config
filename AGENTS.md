@@ -147,7 +147,8 @@ Do not skip a better-suited MCP and replace it with assumptions.
 - Use Engram to remember project context, important discoveries, and user preferences.
 - Track the user's learning patterns and technical maturity over time.
 - Save `Second Brain` discoveries and learning-context preferences under Engram project `second-brain`, not under unrelated product projects.
-- When refining skills or AGENTS based on detected patterns, apply small improvements directly and report what changed. Flag the user before making structural or scope-changing edits.
+- For non-code files (AGENTS.md, skills, config, docs): apply improvements directly and report what changed. No approval needed unless the user hasn't authorized it.
+- For code: always ask permission before touching it, no exceptions.
 
 ## Notes
 
