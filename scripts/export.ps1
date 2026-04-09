@@ -49,7 +49,7 @@ foreach ($name in @("plugins", "skills", "commands", "agents")) {
 
 Write-Host "Export completado en $repo"
 
-# Export Claude Code config (skills + CLAUDE.md) — only if claude is installed
+# Export Claude Code config (skills + CLAUDE.md) - only if claude is installed
 $claudeCmd = Get-Command claude -ErrorAction SilentlyContinue
 if ($claudeCmd) {
     $claudeSrc = Join-Path $ConfigHome ".claude"
@@ -75,11 +75,10 @@ if ($claudeCmd) {
     if ($exported) {
         Write-Host "Claude Code config exported to $claudeRepoDir"
     } else {
-        Write-Host "Claude Code installed but no config found — skipping claude export"
+        Write-Host "Claude Code installed but no config found - skipping claude export"
     }
-}
-else {
-    Write-Host "Claude Code not found — skipping claude export"
+} else {
+    Write-Host "Claude Code not found - skipping claude export"
 }
 
 # Sync Engram memories to repo

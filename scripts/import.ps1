@@ -1,4 +1,4 @@
-param(
+﻿param(
     [string]$RepoPath = "",
     [string]$ConfigHome = ""
 )
@@ -47,7 +47,7 @@ foreach ($name in @("plugins", "skills", "commands", "agents")) {
 
 Write-Host "Import completado en $target"
 
-# Import Claude Code config (skills + CLAUDE.md) — only if claude is installed
+# Import Claude Code config (skills + CLAUDE.md) - only if claude is installed
 $claudeCmd = Get-Command claude -ErrorAction SilentlyContinue
 $claudeRepoDir = Join-Path $repo "claude"
 if ($claudeCmd -and (Test-Path $claudeRepoDir)) {
@@ -69,9 +69,9 @@ if ($claudeCmd -and (Test-Path $claudeRepoDir)) {
 
     Write-Host "Claude Code config imported to $claudeDest"
 } elseif (-not $claudeCmd) {
-    Write-Host "Claude Code not found — skipping claude import"
+    Write-Host "Claude Code not found - skipping claude import"
 } else {
-    Write-Host "No claude config found in repo — skipping"
+    Write-Host "No claude config found in repo - skipping"
 }
 
 # Import Engram memories from repo
@@ -82,5 +82,5 @@ if (Test-Path $engramDir) {
     Pop-Location
     Write-Host "Engram memories imported from $engramDir"
 } else {
-    Write-Host "No Engram chunks found in $engramDir — skipping memory import"
+    Write-Host "No Engram chunks found in $engramDir - skipping memory import"
 }

@@ -89,6 +89,18 @@ When the user is also learning, add:
 
 - `How to read this` — what clue in the source trains their research eye next time
 
+## Self-Check
+
+Before presenting the output, verify:
+
+- Are facts, interpretations, and recommendations clearly separated — or are they blurred together?
+- Does the main recommendation actually apply to this project's stack, constraints, and context?
+- Is there at least one official or primary source backing the core claim?
+- Is anything presented as current that might be outdated for this technology version?
+- Would the user know what to verify next before acting on this?
+
+If any answer is no, fix it before responding.
+
 <guardrails>
 - Cite sources; distinguish official docs from community answers
 - If a source is from a forum, say so explicitly

@@ -86,6 +86,17 @@ When this skill is used, return:
 - `Implementation impact`
 - `Recommended action`
 
+## Self-Check
+
+Before presenting the output, verify:
+
+- Does the named operation (`delete`, `close`, `deactivate`, `archive`) match the real business action — or is it a technical shortcut?
+- Is the domain rule traceable to a documented source, not inferred from intuition?
+- Would the recommended implementation match what a domain expert would expect when reading the source of truth?
+- Is there any terminology in the output that could distort domain meaning if read by a new team member?
+
+If any answer is no, fix it before responding.
+
 <guardrails>
 - Do not rewrite domain logic, planning meaning, or terminology from intuition
 - If a planning artifact conflicts with documented domain logic, stop, surface the conflict, and ask before editing

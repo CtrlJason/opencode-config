@@ -3,172 +3,112 @@ name: sdd-domain-validation
 description: Validate domain changes before implementation so feature, refactor, issue, and testing work stays consistent with project rules.
 ---
 
-## Purpose
+## Core Rule
 
-Use this skill when a change may affect domain behavior, business rules, entity state, persistence rules, feature flow, or planning/documentation artifacts that could distort domain meaning.
+Use this skill when a change may affect domain behavior, business rules, entity state, persistence rules, or planning artifacts that could distort domain meaning.
 
-This skill should not only protect the domain.
-It should also help the user understand why the rule exists, how it affects implementation quality, and what risks appear when the domain is interpreted incorrectly.
+The goal is not only protecting the domain — it is helping the user understand why the rule exists, what it constrains, and what breaks when it is misunderstood.
 
-## When to use
+Do not use this skill for changes clearly outside domain meaning: environment config, pure utility extraction, styling, or administrative doc edits that cannot affect business logic.
 
-Use this skill when the user is about to work on something like:
+## First Step
 
-- feature work that changes business behavior (`feat`)
-- refactors that could affect rules or data flow (`refactor`)
-- bug fixes tied to domain inconsistencies (`fix`)
-- tests that need domain expectations clarified (`test`)
-- maintenance work that still affects the domain (`chore`)
-- documentation updates that reflect or could distort real domain rules (`docs`)
-- edits to stories, epics, sprints, backlog items, or planning artifacts when they may change domain meaning
-- performance changes that alter behavior or invariants (`perf`)
-- formatting or non-behavioral cleanup only when it touches domain files (`style`)
-- build or CI changes that can impact validation of domain rules (`build`, `ci`)
-- state changes like open/close/activate/deactivate/delete
+Before validating, identify whether the change touches domain meaning or only technical structure.
 
-## When NOT to use
+If it touches domain, check:
+1. Project documentation or SDD context when available
+2. Notion as source of truth for stories, epics, sprints, or backlog items
+3. Whether the operation is truly `delete`, `close`, `deactivate`, `archive`, or another domain action — naming matters
 
-Do not use this skill for changes that are clearly outside domain validation, such as:
+Do not inspect code unless the user asks or the implementation state is required to resolve the domain question.
 
-- database configuration
-- environment configuration
-- pure utility extraction with no business meaning
-- styling or presentational UI changes
-- simple helper functions with no domain impact
-- planning or documentation edits that are purely administrative and cannot affect domain meaning
+## Core Domain Checklist
 
-## Scope boundary
+Before implementation, confirm whether the change alters any of these:
 
-Only apply this skill when the change can affect the meaning of the domain, not just the technical shape of the code or the wording of an artifact.
+1. Domain state or lifecycle of an entity
+2. Business invariants
+3. Data persistence rules
+4. Ownership or permissions
+5. Interactions between entities
 
-Usually outside scope:
+For docs/planning changes, also confirm:
 
-- environment or database configuration
-- pure utility extraction with no business meaning
-- formatting-only, naming-only, or docs-only changes that do not change behavior or domain meaning
+6. The written meaning of a story, epic, or backlog item
+7. The terminology used to describe the domain
+8. The relationship between planning artifacts and documented domain rules
 
-## Core rule
+If yes to any → validate the domain first.
 
-Before implementation, identify whether the change alters any of these:
+## Examples
 
-1. domain state
-2. business invariants
-3. data persistence rules
-4. ownership or permissions
-5. lifecycle meaning of an entity
-6. interactions between entities
+<example>
+User wants to add a "delete wallet" button.
 
-If the task is in docs/planning, also identify whether it alters any of these:
+Weak approach: Immediately discuss the DELETE endpoint implementation.
 
-7. the written meaning of a story, epic, sprint, or backlog item
-8. the terminology used to describe the domain
-9. the relationship between planning artifacts and documented domain rules
+Strong approach:
+1. "Antes de implementar, ¿qué significa 'eliminar' una billetera en tu dominio? ¿Desaparece permanentemente, o se desactiva?"
+2. User: "La verdad no lo hemos definido."
+3. "Entonces lo que necesitas primero no es código — es esa decisión. Si un usuario elimina su billetera y tiene transacciones históricas, ¿qué pasa con ese historial?"
+4. Surface the invariant: wallets with transaction history likely cannot be hard-deleted without breaking audit trails.
+5. Recommend: model as `deactivate`, not `delete`. Document the rule before implementing.
+</example>
 
-If yes, validate the domain first.
+<example>
+User wants to change a story to say "users can archive transactions."
 
-## Teaching intent
+Weak approach: Update the story text directly.
 
-When this skill is used, do not stop at "this is the rule".
+Strong approach:
+1. "Antes de cambiar la historia, ¿'archivar' aquí significa lo mismo que 'eliminar' o es un estado diferente?"
+2. If different: "Entonces necesitamos asegurarnos de que el modelo de datos refleje ese estado — ¿existe ya un campo `archived` en Transaction?"
+3. Check for conflicts with existing domain rules before editing the artifact.
+</example>
 
-Also teach:
+## Implementation Quality Link
 
-- why the rule exists in the business or product meaning
-- what implementation decisions it constrains
-- what would likely break if the rule is misunderstood
-- how naming, layering, persistence, and permissions should reflect the real domain meaning
+Connect domain validation to implementation explicitly:
 
-The goal is not only correct validation now, but better domain judgment from the user over time.
+- Naming should reflect the real business action, not a technical shortcut
+- Layer placement should match responsibility, not convenience
+- Persistence behavior should reflect the true lifecycle of the entity
+- Observable behavior in UI/API should match the source of truth
 
-## Workflow
+## Completion Check
 
-1. Identify the change type: `feat`, `refactor`, `issue`, or `testing`.
-2. Determine if the change touches domain meaning or only technical structure.
-3. If it touches domain, list the affected entities and rules.
-4. Check the project documentation or SDD context when available.
-5. If the task touches stories, epics, sprints, backlog items, or documentation, read the documented business meaning first and treat Notion as the source of truth.
-6. Do not inspect code unless the user asks for it or the implementation state is required to resolve the domain question.
-7. Decide whether the operation is really `delete`, `close`, `deactivate`, `archive`, or another domain action.
-8. If a planning or documentation artifact conflicts with documented domain logic, stop, surface the conflict, and ask before editing.
-9. Propose the safest next step.
-10. If the user says they think the work is finished, run a completion check before accepting it.
+When the user says they are done, verify:
 
-## Documentation interpretation guard
+- The domain rule was preserved
+- The naming matches the real business action
+- No planning artifact was rewritten in a way that changes domain meaning without confirmation
+- The technical solution did not smuggle in a different domain meaning
 
-If a story, epic, backlog item, or other documentation artifact is ambiguous:
-
-1. point to the exact ambiguous phrase or decision
-2. separate documented facts from current inference
-3. ask one short question that resolves the ambiguity if possible
-
-Do not silently fill domain gaps with intuition.
-If there are multiple plausible readings, say so clearly before recommending implementation.
-
-## Implementation quality link
-
-Connect domain validation to implementation quality explicitly:
-
-- naming should reflect the real business action, not a technical shortcut
-- layer placement should match responsibility, not convenience
-- persistence behavior should reflect the true lifecycle of the entity
-- permissions and ownership should match the documented business rule
-- observable behavior in UI/API should match the meaning described in the source of truth
-
-If the implementation idea violates one of these, explain the mismatch directly.
-
-## Understanding check
-
-Do not assume that reading the documentation means the user understood the domain.
-
-For important or risky domain topics, verify understanding with one light check such as:
-
-- ask the user to summarize the domain rule in their own words
-- ask how the rule affects naming, layers, or persistence
-- ask what risk appears if the rule is implemented the wrong way
-- ask the user to distinguish the business action from the technical action
-
-Use the lightest check that helps the user build judgment without turning the flow into bureaucracy.
-
-## Completion check
-
-When the user says they think they are done, verify:
-
-- the domain rule was preserved
-- the change matches the requirement
-- the layer boundaries still make sense
-- no obvious inconsistency was introduced
-- the naming matches the real behavior
-- the implementation does not hide a domain mismatch
-- no planning or documentation artifact was rewritten in a way that changes domain meaning without confirmation
-
-Also verify:
-
-- the chosen names still describe the real business action
-- the implementation respects the responsibility of each layer
-- the technical solution did not smuggle in a different domain meaning
-
-If something is off, report it clearly and suggest the smallest fix.
-
-## Output format
+## Output Shape
 
 When this skill is used, return:
 
 - `Change type`
 - `Affects domain?`
-- `Affected entities`
 - `Domain rule to protect`
 - `Source of truth checked`
 - `Implementation impact`
-- `Risk if misunderstood`
 - `Recommended action`
-- `Next step`
 
-## Notes
+## Self-Check
 
-- Prefer the domain term that matches the real behavior.
-- If something is not truly deleted, do not call it delete.
-- Do not rewrite domain logic, planning meaning, or terminology from intuition.
-- Planning artifacts are not safe to edit blindly; they can encode real domain decisions.
-- If the change is ambiguous, ask one short question before deciding.
-- Keep the answer short and practical.
-- Prefer teaching the reason behind the rule over merely stating the rule.
-- If the user can name the rule but cannot explain its implementation impact, keep teaching before moving on.
+Before presenting the output, verify:
+
+- Does the named operation (`delete`, `close`, `deactivate`, `archive`) match the real business action — or is it a technical shortcut?
+- Is the domain rule traceable to a documented source, not inferred from intuition?
+- Would the recommended implementation match what a domain expert would expect when reading the source of truth?
+- Is there any terminology in the output that could distort domain meaning if read by a new team member?
+
+If any answer is no, fix it before responding.
+
+## Guardrails
+
+- Do not rewrite domain logic, planning meaning, or terminology from intuition
+- If a planning artifact conflicts with documented domain logic, stop, surface the conflict, and ask before editing
+- If something is not truly deleted, do not call it delete
+- If the change is ambiguous, ask one short question before deciding
