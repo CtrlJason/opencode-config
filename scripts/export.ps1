@@ -49,6 +49,39 @@ foreach ($name in @("plugins", "skills", "commands", "agents")) {
 
 Write-Host "Export completado en $repo"
 
+# Export Claude Code config (skills + CLAUDE.md) — only if claude is installed
+$claudeCmd = Get-Command claude -ErrorAction SilentlyContinue
+if ($claudeCmd) {
+    $claudeSrc = Join-Path $ConfigHome ".claude"
+    $claudeRepoDir = Join-Path $repo "claude"
+    $exported = $false
+
+    $claudeMd = Join-Path $claudeSrc "CLAUDE.md"
+    if (Test-Path $claudeMd) {
+        New-Item -ItemType Directory -Force $claudeRepoDir | Out-Null
+        Copy-Item $claudeMd (Join-Path $claudeRepoDir "CLAUDE.md") -Force
+        $exported = $true
+    }
+
+    $claudeSkillsSrc = Join-Path $claudeSrc "skills"
+    if (Test-Path $claudeSkillsSrc) {
+        $claudeSkillsDest = Join-Path $claudeRepoDir "skills"
+        New-Item -ItemType Directory -Force $claudeSkillsDest | Out-Null
+        Get-ChildItem $claudeSkillsDest -Force -ErrorAction SilentlyContinue | Remove-Item -Recurse -Force
+        Copy-Item "$claudeSkillsSrc\*" $claudeSkillsDest -Recurse -Force
+        $exported = $true
+    }
+
+    if ($exported) {
+        Write-Host "Claude Code config exported to $claudeRepoDir"
+    } else {
+        Write-Host "Claude Code installed but no config found — skipping claude export"
+    }
+}
+else {
+    Write-Host "Claude Code not found — skipping claude export"
+}
+
 # Sync Engram memories to repo
 Push-Location $repo
 engram sync --all

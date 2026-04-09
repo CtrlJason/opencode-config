@@ -47,6 +47,33 @@ foreach ($name in @("plugins", "skills", "commands", "agents")) {
 
 Write-Host "Import completado en $target"
 
+# Import Claude Code config (skills + CLAUDE.md) — only if claude is installed
+$claudeCmd = Get-Command claude -ErrorAction SilentlyContinue
+$claudeRepoDir = Join-Path $repo "claude"
+if ($claudeCmd -and (Test-Path $claudeRepoDir)) {
+    $claudeDest = Join-Path $ConfigHome ".claude"
+
+    New-Item -ItemType Directory -Force (Join-Path $claudeDest "skills") | Out-Null
+
+    $claudeMd = Join-Path $claudeRepoDir "CLAUDE.md"
+    if (Test-Path $claudeMd) {
+        Copy-Item $claudeMd (Join-Path $claudeDest "CLAUDE.md") -Force
+    }
+
+    $claudeSkillsSrc = Join-Path $claudeRepoDir "skills"
+    if (Test-Path $claudeSkillsSrc) {
+        $claudeSkillsDest = Join-Path $claudeDest "skills"
+        Get-ChildItem $claudeSkillsDest -Force -ErrorAction SilentlyContinue | Remove-Item -Recurse -Force
+        Copy-Item "$claudeSkillsSrc\*" $claudeSkillsDest -Recurse -Force
+    }
+
+    Write-Host "Claude Code config imported to $claudeDest"
+} elseif (-not $claudeCmd) {
+    Write-Host "Claude Code not found — skipping claude import"
+} else {
+    Write-Host "No claude config found in repo — skipping"
+}
+
 # Import Engram memories from repo
 $engramDir = Join-Path $repo ".engram"
 if (Test-Path $engramDir) {

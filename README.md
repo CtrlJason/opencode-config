@@ -8,9 +8,10 @@ Backup privado para mi configuracion de OpenCode.
 - `AGENTS.md`
 - `package.json`
 - `plugins/`
-- `skills/`
+- `skills/` — skills optimizadas para GPT-4o y Gemini (ver seccion de skills mas abajo)
 - `commands/`
 - `agents/`
+- `claude/` — skills y CLAUDE.md exclusivos de Claude Code (se cargan solo si `claude` esta instalado)
 
 ## Que no guarda
 
@@ -179,6 +180,33 @@ powershell -ExecutionPolicy Bypass -File .\scripts\test-bootstrap.ps1
 ```
 
 Ambos tests usan una raiz temporal y la eliminan si todo sale bien. Si algo falla, dejan la ruta para inspeccion.
+
+## Skills: Claude Code vs OpenCode
+
+Este repo mantiene dos conjuntos de skills separados porque cada herramienta usa modelos distintos y procesa instrucciones de forma diferente.
+
+### `skills/` — para OpenCode (GPT-4o y Gemini)
+
+Optimizadas para GPT-4o y Gemini Pro/Flash. Caracteristicas:
+
+- **Estructura con Markdown headers** (`##`) — formato primario de GPT-4o; Gemini acepta ambos pero Markdown es mas universal
+- **XML solo en `<example>` blocks** — para envolver ejemplos concretos, no como estructura de secciones
+- **Sin referencias a Engram o Second Brain** — calibracion directa con preguntas al usuario; los MCPs se usan si estan disponibles pero no se asumen
+- **2+ ejemplos por skill** — Gemini recomienda explicitamente "always include few-shot examples"
+- **Instrucciones mas literales** — GPT-4.1 sigue instrucciones al pie de la letra y no infiere tanto como Claude
+
+### `claude/` — para Claude Code (Claude Sonnet/Opus 4.x)
+
+Optimizadas exclusivamente para Claude. Caracteristicas:
+
+- **XML tags como estructura principal** — `<first_step>`, `<core_rule>`, `<guardrails>`, etc. Claude fue entrenado con XML y lo parsea con precision nativa
+- **Referencias explicitas a Engram y Second Brain** — Claude conoce los tools de Engram (`mem_context`, `mem_search`) y los llama cuando el skill se los indica
+- **Lenguaje no agresivo** — Claude 4.5/4.6 sobre-activa con "MUST/CRITICAL"; se usa lenguaje directo pero no imperativo
+- **Skills adicionales**: `read-runtime-signal` y `lookup-docs` — granularidad extra que aprovecha mejor el routing de Claude Code
+
+### Por que no unificarlos
+
+Un formato unico produciria skills genericas que no sacan el mejor provecho de ninguno de los dos modelos. Claude con Markdown pierde precision estructural. GPT con XML no da el mismo rendimiento que con Markdown. Mantenerlos separados permite optimizar cada uno para su modelo real.
 
 ## Recomendacion practica
 
