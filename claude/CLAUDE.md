@@ -141,7 +141,7 @@ For these learning skills, recover context from `Second Brain` first. Prioritize
 - **`context7`** — Use for official, current, version-specific docs before guessing.
 - **`playwright`** — Use for browser-visible UI behavior, navigation, console signals, and interaction-based validation.
 - **`postgres`** — Use for read-only persistence checks.
-- **`notion`** — Use for Notion workspace content, docs, comments, and data sources.
+- **`notion`** — Use for Notion workspace content, docs, comments, and data sources. For any project, Notion is the source of truth for domain analysis and business rules. Use `notion-fetch` with URLs already stored in Engram — `notion-search` burns tokens rediscovering pages that are already known. Project-specific Notion URLs belong in Engram under the corresponding project, not in CLAUDE.md files.
 
 Do not skip a better-suited MCP and replace it with assumptions.
 
