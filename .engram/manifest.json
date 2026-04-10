@@ -64,6 +64,14 @@
       "sessions": 2,
       "memories": 7,
       "prompts": 18
+    },
+    {
+      "id": "2189699c",
+      "created_by": "YeisonDavidMosqueraM",
+      "created_at": "2026-04-10T21:03:29Z",
+      "sessions": 1,
+      "memories": 6,
+      "prompts": 32
     }
   ]
 }

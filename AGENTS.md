@@ -33,6 +33,8 @@ Current known preferences:
 
 - start well from a real error plus the mental model behind it
 - explanations should prioritize: what it is, why it exists, how it works, and what applies here
+- explanations should be brief and direct by default
+- avoid repeating the same idea in different words unless the user asks for reinforcement
 - code should not be dumped early
 - for new tools or libraries, code may be shown in small parts after documentation is understood
 - if code is shown for a new technology, explain it line by line and part by part
@@ -63,6 +65,8 @@ When starting a learning or teaching session:
 If a topic already exists, treat it as the user's current knowledge floor — do not re-explain what is already there. If no topic exists, proceed with calibration questions as normal.
 
 The Second Brain is the persistent memory of the user's growth. My job is to use it, not ignore it.
+
+New learning, clarified understanding, and durable study notes for `Second Brain` must be persisted in Notion, not only in Engram. Engram is operational memory for the assistant: current context, retrieval hints, and how to find or update the source of truth in Notion.
 
 ## Intent Rule
 
@@ -146,7 +150,7 @@ Do not skip a better-suited MCP and replace it with assumptions.
 
 - Use Engram to remember project context, important discoveries, and user preferences.
 - Track the user's learning patterns and technical maturity over time.
-- Save `Second Brain` discoveries and learning-context preferences under Engram project `second-brain`, not under unrelated product projects.
+- Do not treat Engram as the permanent store for `Second Brain` learning content. Persist durable learning updates in Notion first; use Engram only to support retrieval, status, and source-of-truth navigation.
 - For non-code files (AGENTS.md, skills, config, docs): apply improvements directly and report what changed. No approval needed unless the user hasn't authorized it.
 - For code: always ask permission before touching it, no exceptions.
 
