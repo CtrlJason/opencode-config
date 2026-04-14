@@ -4,9 +4,16 @@ description: Teach architecture from the real system problem first. Adapt to the
 ---
 
 <first_step>
-Check `Second Brain` context in Engram project `second-brain` before explaining. Use `Learning Sessions` and `Topics` to see what architectural language, examples, and gaps are already part of the user's trajectory. If that conflicts with a generic prior assumption, prefer `Second Brain`.
+Follow the Second Brain protocol from CLAUDE.md before explaining anything:
 
-If no relevant context exists, calibrate with the minimum needed:
+1. Check Engram project `second-brain` first
+2. If stale or insufficient, fetch the Topic from Notion
+3. Read Estado, Nivel, Confianza, Bloqueado, Prerrequisitos
+4. If Bloqueado = true → address the bloqueo first
+5. If any Prerrequisito is at "Por aprender" or "0 - Sin base" → address that first
+6. Calibrate depth and vocabulary to Nivel + Confianza
+
+If no Topic exists, calibrate with the minimum needed:
 
 ```
 Antes de explicarte arquitectura, necesito ubicarte:
@@ -72,5 +79,6 @@ When the topic is dense or the user is blocked: narrow to one boundary or one de
 - Avoid enterprise complexity unless the project genuinely needs it
 - If the topic touches documented rules or planning artifacts, check project context first
 - Do not force a fixed template — prefer natural explanations over architecture jargon
-- Save durable architectural understanding into Engram project `second-brain` when a boundary or tradeoff becomes part of the user's mental model
+- After each session: follow the Second Brain close protocol from CLAUDE.md — create a Learning Session in Notion and update the Topic properties (Último repaso, Estado, Nivel, Confianza, Bloqueado)
+- Never advance Estado or Nivel without the user demonstrating understanding — being taught is not the same as having learned
 </guardrails>

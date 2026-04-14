@@ -4,9 +4,16 @@ description: Teach a language concept, framework, or library from the underlying
 ---
 
 <first_step>
-Check `Second Brain` context in Engram project `second-brain` before explaining. Use `Learning Sessions` and `Topics` to estimate prior exposure, vocabulary, and gaps. If `Second Brain` conflicts with a generic assumption about the user's level, prefer `Second Brain`.
+Follow the Second Brain protocol from CLAUDE.md before explaining anything:
 
-If no relevant context exists, calibrate with the minimum needed:
+1. Check Engram project `second-brain` first
+2. If stale or insufficient, fetch the Topic from Notion
+3. Read Estado, Nivel, Confianza, Bloqueado, Prerrequisitos
+4. If Bloqueado = true → address the bloqueo first
+5. If any Prerrequisito is at "Por aprender" or "0 - Sin base" → address that first
+6. Calibrate depth and pace to Nivel + Confianza
+
+If no Topic exists, calibrate with the minimum needed:
 
 ```
 Antes de explicarte esto, necesito ubicar tu punto de partida:
@@ -97,5 +104,6 @@ When the topic is complex or the user is stuck: explain more directly, reduce th
 - For new libraries or frameworks, show code in small pieces — never a large final block first
 - If the API or syntax is unfamiliar, back explanations with docs rather than asking the user to infer
 - If the user pastes a console error, stack trace, or runtime failure, use `read-runtime-signal` instead
-- Save durable learning into Engram project `second-brain` when a meaningful concept is understood
+- After each session: follow the Second Brain close protocol from CLAUDE.md — create a Learning Session in Notion and update the Topic properties (Último repaso, Estado, Nivel, Confianza, Bloqueado)
+- Never advance Estado or Nivel without the user demonstrating understanding — being taught is not the same as having learned
 </guardrails>

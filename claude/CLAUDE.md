@@ -50,19 +50,82 @@ When the user asks to learn, understand their progress, review what they already
 
 ## Second Brain Rule
 
-The user has a personal knowledge system in Notion (`🧠 Second Brain`) that tracks everything they have learned, organized by domain. It contains:
-- **Topics** database — topics the user has studied
-- **Learning Sessions** database — recorded sessions with what was covered
+The user has a personal knowledge system in Notion (`🧠 Second Brain`) with two key databases:
 
-Before teaching or explaining any concept, check the Second Brain to understand the user's real knowledge baseline. This prevents re-explaining what is already documented and allows starting from where the user actually is.
+- **Topics** — what the user knows: Estado, Nivel, Confianza, Prerrequisitos, last review date
+- **Learning Sessions** — what was learned per session: context, blockers, what was understood
 
-When starting a learning or teaching session:
-1. First check Engram project `second-brain` — it is already in memory and fast.
-2. If Engram does not have enough detail or freshness, use the Notion MCP to fetch current data from Topics and Learning Sessions.
+**Notion data source URLs (use `notion-fetch` directly — never `notion-search` for these):**
+- Topics DB: `collection://22f1b685-8ae7-4a3e-949f-9ee937550801`
+- Learning Sessions DB: `collection://f18306c5-a39e-4168-aabe-e222d753629b`
 
-If a topic already exists, treat it as the user's current knowledge floor — do not re-explain what is already there. If no topic exists, proceed with calibration questions as normal.
+### Protocol: Before teaching
 
-The Second Brain is the persistent memory of the user's growth. Use it — do not ignore it.
+1. Check Engram project `second-brain` first (fast, already in memory)
+2. If stale or insufficient, fetch the Topic from Notion using the Topics DB or a known topic URL
+3. Apply what you find:
+   - **Bloqueado = true** → address the bloqueo before anything else; do not advance the topic
+   - **Prerrequisitos** → for each, check Estado and Nivel — if "Por aprender" or "0 - Sin base", address that first
+   - **Nivel + Confianza** → calibrate depth, pace, and example complexity to these values
+   - **Estado** → understand where the user is in their learning journey
+4. If no Topic exists yet → calibrate with minimal questions, then create the Topic after the session
+
+### Protocol: After each learning session
+
+**Step 1 — Create a Learning Session** in the Learning Sessions DB:
+- `Título`: descriptive (e.g. "Tests unitarios en NestJS — arrange/act/assert, mocks")
+- `Dominio`: match the topic's domain
+- `Tipo`: one of → Error real / Concepto aprendido / Decisión técnica / Práctica / Docs / Referencia
+- `Fecha`: today's date
+- `Relación`: link to the Topic page
+- Page content:
+  ```
+  ### Contexto:
+  [where this was applied — project, module, specific problem]
+
+  ### Bloqueado en:
+  [what the user couldn't resolve — leave empty if nothing]
+
+  ### Qué aprendí:
+  [what the user understood — written from their POV, not mine]
+  ```
+
+**Step 2 — Update the Topic properties:**
+- `Último repaso` → today's date (always)
+- `Estado` → advance only if the user demonstrated understanding, not just because I explained it
+- `Nivel` → advance only if the user can apply or explain, not just heard it
+- `Confianza` → update based on how the session went
+- `Bloqueado` + `Bloqueo` → update if a block appeared or was resolved
+
+### Estado progression guide
+
+| From | To | When |
+|---|---|---|
+| Por aprender | Retomando | First session on the topic |
+| Retomando | Aprendiendo | Actively working through it |
+| Aprendiendo | Practicando | Applying it in a real project |
+| Practicando | Aplicado | Used it successfully in real context |
+| Aplicado | Sólido | Can explain it and handle edge cases |
+
+**Rule: Never advance Estado or Nivel without the user demonstrating understanding or explicitly confirming. Being taught ≠ having learned.**
+
+### Topic page content structure
+
+Every Topic page follows this layout — maintain it when adding content:
+
+```
+## 👉 Subtemas
+(links to related specializations or subtopics within this topic)
+
+---
+
+## 📝 Mis notas
+(personal summary — readable 3 months later, no project-specific references)
+[subpages: one per specific subtopic or reference document]
+```
+
+Learning Sessions live in the Learning Sessions DB (separate), linked via the `Relación` property.
+Do NOT put Learning Session content inside the Topic page.
 
 ## Intent Rule
 

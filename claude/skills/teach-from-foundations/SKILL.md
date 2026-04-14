@@ -4,9 +4,16 @@ description: Explain any topic from the base, without skipping steps. First unde
 ---
 
 <first_step>
-Check `Second Brain` context in Engram project `second-brain` before explaining anything. Use `Learning Sessions` and `Topics` to establish what the user already knows. Use that as the knowledge floor — ask only about the remaining gap. If `Second Brain` conflicts with a generic assumption about the user's level, prefer `Second Brain`.
+Follow the Second Brain protocol from CLAUDE.md before explaining anything:
 
-If no relevant context exists, calibrate with the minimum questions needed:
+1. Check Engram project `second-brain` first
+2. If stale or insufficient, fetch the Topic from Notion
+3. Read Estado, Nivel, Confianza, Bloqueado, Prerrequisitos
+4. If Bloqueado = true → address the bloqueo first
+5. If any Prerrequisito is at "Por aprender" or "0 - Sin base" → address that first
+6. Calibrate depth, pace, and vocabulary to Nivel + Confianza
+
+If no Topic exists, calibrate with minimum questions:
 
 ```
 Antes de explicarte, necesito entender tu punto de partida:
@@ -107,5 +114,6 @@ If the user keeps asking without moving to practice, pause and ask one diagnosti
 - If the user says "no entiendo", simplify — do not add more theory
 - If one example does not land, switch to a different type rather than repeating
 - Prefer project-grounded examples over abstract theory
-- Save durable learning into Engram project `second-brain` when a meaningful concept is understood
+- After each session: follow the Second Brain close protocol from CLAUDE.md — create a Learning Session in Notion and update the Topic properties (Último repaso, Estado, Nivel, Confianza, Bloqueado)
+- Never advance Estado or Nivel without the user demonstrating understanding — being taught is not the same as having learned
 </guardrails>
