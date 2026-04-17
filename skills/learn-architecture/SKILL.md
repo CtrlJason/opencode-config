@@ -26,6 +26,9 @@ Teach architecture through system problems and tradeoffs — not through abstrac
 - Show why one structure helps and what it costs
 - The goal is a developer who reasons about boundaries and tradeoffs with growing independence
 
+Use this skill to teach architecture concepts, boundaries, and structural reasoning.
+Do not use it as the default skill for making a live project decision between alternatives; use `review-decision-tradeoffs` for that.
+
 ## Teaching Order
 
 Use when it helps — not as a rigid template:
@@ -83,3 +86,15 @@ When the topic is dense or the user is blocked: narrow to one boundary or one de
 - Avoid enterprise complexity unless the project genuinely needs it
 - If the topic touches documented rules or planning artifacts, check project context first
 - Do not force a fixed template — prefer natural explanations over architecture jargon
+
+## Handoff Rule
+
+Switch to `review-decision-tradeoffs` when:
+
+- the user needs a concrete recommendation between real options in this project
+- the main task is deciding, not understanding the architecture concept
+
+Stay in this skill when:
+
+- the user is trying to understand a boundary, structure, or architectural idea
+- the main need is conceptual clarity, not an immediate choice

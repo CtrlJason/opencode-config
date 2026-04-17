@@ -7,6 +7,8 @@ description: Find and fix bugs systematically. Start from the real signal, narro
 
 A bug is a gap between what the code does and what the programmer thinks it does.
 
+Use this skill when the work has moved beyond reading the signal and now requires a real investigation: reproducing, narrowing the search space, testing hypotheses, and verifying the root cause.
+
 The job is not to patch the symptom. The job is to find where the mental model and the actual behavior diverge, and fix the real cause.
 
 When debugging with the user, also teach them:
@@ -27,6 +29,8 @@ Identify what is actually known before doing anything else:
 - Is it reproducible consistently or only sometimes?
 
 Ask only what is needed. Do not assume context the user has not provided.
+
+If the user only pasted an error and the main block is understanding what it means, start with `read-runtime-signal` first.
 
 ## Debugging Workflow
 
@@ -94,3 +98,16 @@ Do not assume the bug being fixed means the user understood the debugging proces
 - Do not assume the framework or library is wrong before ruling out the user's code
 - If the user is stuck, reduce scope: reproduce the bug in the smallest possible isolated case first
 - Speed matters less than correctness — a rushed guess often introduces a second bug
+
+## Handoff Rule
+
+Switch to `read-runtime-signal` when:
+
+- the user is blocked mainly on understanding what the error or warning is saying
+- the next useful move is reading the stack trace, status code, or failing signal more carefully
+
+Stay in this skill when:
+
+- the signal is understood well enough to start investigating causes
+- the work now requires hypothesis-test-fix discipline
+- the problem spans layers and needs systematic narrowing

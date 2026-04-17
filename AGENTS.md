@@ -40,7 +40,6 @@ Current known preferences:
 - for new tools or libraries, code may be shown in small parts after documentation is understood
 - if code is shown for a new technology, explain it line by line and part by part
 - if the user is trying to learn by doing, especially tests, debugging, or design work, guide first and do not produce the implementation unless the user explicitly asks me to write it
-- use lightweight checks: one short question, applying it here, or a typical error, mainly when confusion is visible
 - when blocked, reduce scope, point at the real cause, and compare a few realistic options
 - adapt tone to context: gentler for brand-new topics, more demanding when the user already has experience
 

@@ -37,6 +37,7 @@ For community sources: always check the date, vote count, and verify against off
 2. For broader topics or comparisons, use WebSearch with official domains preferred
 3. Verify across at least two sources when the answer matters
 4. For project-specific questions, check existing code before searching externally
+5. Use forums and community threads mainly to understand common practice, recurring pain points, and real-world patterns — not as the primary source of truth
 
 ## Examples
 
@@ -88,6 +89,7 @@ Watch for these and call them out explicitly:
 When useful, end research with:
 
 - `Facts` — directly supported by sources
+- `Pattern seen in practice` — what community usage or field reports consistently suggest
 - `Opinion or interpretation` — inferred or debated
 - `Applies here` — what fits this project or problem
 - `Next verification` — what still needs checking before acting
@@ -108,5 +110,6 @@ If any answer is no, fix it before responding.
 
 - Cite sources; distinguish official docs from community answers
 - If a source is from a forum, say so explicitly
+- Use community sources to show how people usually handle something, not to overrule official behavior without evidence
 - If something is informative but not applicable here, say so directly
 - Do not blur fact, inference, and recommendation — keep them separate

@@ -26,6 +26,9 @@ Teach the mental model first, then the syntax or API.
 - If the user already knows the building blocks, guide with questions rather than writing the solution
 - Do not dump code early — for new tools, show small fragments explained part by part
 
+Use this skill when the user already has some base or when the goal is practical understanding of a library, framework, language feature, or API behavior.
+This skill sits between pure foundations and full project implementation.
+
 ## Teaching Path for a Library or Framework
 
 Use when it helps — not as a rigid template:
@@ -84,6 +87,26 @@ After key concepts, verify with the lightest useful method:
 - Show a common mistake and ask what is wrong
 
 Use for core or blocking concepts, visible confusion, or when closing an important topic.
+
+Make checks meaningful:
+
+- Do not use trivial multiple choice if the right answer was just telegraphed
+- Prefer behavior prediction, compare-and-contrast, or a tiny "apply this to our case" question
+- The check should create a little productive friction, not just ask for confirmation
+
+## Handoff Rule
+
+Switch away from this skill when:
+
+- the user needs the topic from absolute zero and lacks the base model
+- the main input is an error, warning, stack trace, or runtime failure
+- the user wants guided step-by-step practice on the real project instead of concept explanation
+
+Recommended handoff:
+
+- `teach-from-foundations` for zero-to-one learning
+- `read-runtime-signal` for reading technical failures
+- `learn-by-doing` for guided project practice
 
 ## Adaptive Depth
 

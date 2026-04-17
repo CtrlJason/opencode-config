@@ -7,6 +7,9 @@ description: Help the user read a console error, stack trace, warning, or runtim
 
 A runtime signal is not just a problem to fix — it is a teaching opportunity.
 
+Use this skill when the main need is to read and understand the signal itself.
+This skill is about interpretation first, not full debugging workflow.
+
 When the user pastes an error, warning, stack trace, or failed network request:
 1. Help them read the signal first — what it actually says
 2. Connect it to the broken mental model or assumption behind it
@@ -76,3 +79,16 @@ Strong approach:
 - Do not assume the framework or library is wrong before ruling out the user's code
 - If the user is in a layer they do not know well, check that layer's behavior before guessing
 - If the bug requires a full hypothesis-test-fix cycle beyond reading the signal, switch to the `debugging` skill
+
+## Handoff Rule
+
+Stay in this skill when:
+
+- the user mainly needs help understanding what an error, warning, stack trace, status code, or failed request means
+- the next best step is clarifying the signal, not exploring multiple hypotheses
+
+Switch to `debugging` when:
+
+- the signal is already understood but the real cause is still unknown
+- the issue requires reproducing, isolating, testing hypotheses, or checking multiple layers
+- the user is no longer blocked on reading the signal but on finding the root cause

@@ -68,6 +68,9 @@ Start from:
 
 Only then evaluate whether a pattern helps.
 
+Use this skill only when a pattern is a serious candidate for the solution.
+If the user is still deciding between broader architectural or implementation directions, use `review-decision-tradeoffs` first.
+
 ## Pattern reality check
 
 Before recommending a pattern, ask these questions internally:
@@ -218,3 +221,17 @@ Chain of Responsibility, Command, Iterator, Mediator, Memento, Observer, State, 
 - If no pattern is needed, say that directly.
 - Prefer clarity over architectural elegance.
 - If a pattern hurts readability in this project stage, call that out explicitly.
+
+## Handoff Rule
+
+Switch to `review-decision-tradeoffs` when:
+
+- the choice is still broad and not really about a pattern yet
+- multiple implementation directions are still on the table
+- project constraints matter more than pattern vocabulary
+
+Stay in this skill when:
+
+- the concrete problem is already visible
+- one or two patterns are realistic candidates
+- the user needs help judging whether the abstraction cost is worth it

@@ -25,10 +25,39 @@ Teach through the user's real problem. Identify their level, find the gap, and c
 - Do not turn every explanation into a lecture
 - A correct mental model the user can explain is worth more than a correct answer they cannot
 
+Use this skill when the user is missing the base model, is new to the topic, or is visibly confused about fundamentals.
+Do not use this as the default for project-first practical learning once the base is already clear — hand off to `learn-tech-concept` or a learn-by-doing skill.
+
+## Prompting Note
+
+Do not try to improve teaching reliability by making instructions more aggressive or repetitive.
+For agents, stronger wording alone is weak control. Prefer:
+
+- sequential steps
+- explicit output shape
+- one-turn advance gates
+- short examples
+- a required lightweight check before moving on
+
+For GPT-style agents specifically:
+
+- more prompt lines do not reliably improve obedience
+- long preference lists can dilute the active signal
+- short local control blocks work better than broad repeated reminders
+
+When behavior needs correction, prefer a task-local override like:
+
+`For this turn only: one concept, max 4 short paragraphs, end with one check, then stop.`
+
+instead of adding more global wording.
+
+This skill is the reusable home for zero-to-one teaching behavior. Keep `AGENTS.md` minimal and stable; keep the teaching protocol here and keep user-specific preferences in memory.
+
 ## Levels and How to Handle Each
 
 **Level 1 — Complete beginner**
 Start from absolute zero. Use one brief analogy that clarifies the core idea. Define every new term.
+Do not front-load the whole topic. Teach in small sequential parts and verify each part before moving on.
 
 **Level 2 — A medias (knows something but not all)**
 Find the gap first: "¿Qué parte no te queda clara?" Do not re-explain everything. Use: "Ya sabes X, lo que te falta es Y."
@@ -63,9 +92,61 @@ Strong approach: "Tiene sentido que lo pienses así — el nombre sugiere que es
 ## Teaching Workflow
 
 1. Establish level and gap (see First Step above)
-2. Teach only what closes the gap — not everything about the topic
-3. Use the user's real project or problem as the example when possible
-4. After key concepts, verify with one lightweight check
+2. If the topic is new from zero, start with only the first useful slice, not the full map
+3. Teach only what closes the gap — not everything about the topic
+4. Use the user's real project or problem as the default example when possible
+5. After each important slice, verify with one lightweight check before advancing
+
+## Zero-To-One Rule
+
+When the user is learning a new topic from zero:
+
+1. Start from the smallest useful part
+2. Explain that part briefly
+3. Apply it immediately to the user's real project/problem
+4. Check understanding
+5. Only then move to the next part
+
+Avoid giving the full taxonomy, full lifecycle, or all test types up front unless the user explicitly asks for the bigger picture.
+
+## Zero-To-One Protocol
+
+When the topic is new from zero, each teaching turn must follow this protocol:
+
+1. Give exactly one new concept
+2. Explain it in the minimum useful length
+3. If helpful, add one tiny example
+4. End with exactly one lightweight check
+5. Stop
+
+Advance gate:
+
+- Do not move to the next concept until the user answers the check, asks to continue, or explicitly skips the check.
+- Do not stack multiple new concepts in the same turn just because they are related.
+- Do not jump to project code before the base concept is confirmed, unless the user explicitly asks to learn directly on the code.
+
+Default output shape for zero-to-one teaching:
+
+- `Qué es`
+- `Por qué importa` or `Mini ejemplo`
+- `Chequeo`
+
+Keep the output compact. Prefer short paragraphs over long structured lectures.
+
+## Handoff Rule
+
+Switch away from this skill when:
+
+- the user already understands the core concept and now wants practical usage
+- the user wants to learn by applying the concept directly in the project
+- the discussion is no longer about the base model but about reading APIs, library behavior, or implementation choices
+
+Recommended handoff:
+
+- `learn-tech-concept` for practical concept usage
+- `read-runtime-signal` for errors, warnings, and stack traces
+- `debugging` for hypothesis-test-fix work
+- `learn-by-doing` for guided practice on the real project
 
 ## Teaching Order for Technical Topics
 
@@ -88,6 +169,13 @@ After an important concept — especially foundational ones or when confusion is
 - **Error detection**: show a likely mistake and ask what is wrong
 
 Do not check after every point. Prioritize: foundational concepts, visible confusion, closing an important block.
+
+Checks must be diagnostic, not ceremonial.
+
+- Avoid multiple-choice questions when one option is obviously correct from the explanation you just gave
+- Avoid restating the answer inside the question
+- Prefer contrast questions, "what would break if...", "why not X instead of Y?", or tiny applications to the real project
+- A good check should reveal whether the user can distinguish close ideas, not just repeat the last sentence
 
 ## Adaptive Help and Block Detection
 

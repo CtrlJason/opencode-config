@@ -12,6 +12,9 @@ Use it only when there is a real decision to make. Do not force a tradeoff analy
 This skill should not only produce a recommendation.
 It should help the user learn how to identify the filters that matter, detect weak reasoning, and make better decisions with less dependence on the assistant over time.
 
+Use this skill for real project decisions between plausible alternatives.
+Do not use it just because a concept or pattern was mentioned by name.
+
 ## Decision-first guard
 
 Before analyzing tradeoffs, check whether there is actually a meaningful decision.
@@ -96,6 +99,21 @@ This keeps the advice practical while still teaching how the decision could chan
 - Use structure only when it improves clarity; do not force a rigid template.
 - Prefer real filters over exhaustive comparison.
 - If the simplest option is enough, say so clearly and explain why.
+
+## Handoff Rule
+
+Switch to `lookup-docs` when the user mainly needs official API or configuration details.
+
+Switch to `choose-design-pattern` when:
+
+- the decision has narrowed to whether a specific pattern should be introduced
+- the user is explicitly asking if a design pattern is appropriate for a concrete code problem
+
+Stay in this skill when:
+
+- the choice is broader than a pattern name
+- the real work is comparing alternatives under project constraints
+- the user needs a recommendation, not a pattern lesson
 
 ## Notes
 

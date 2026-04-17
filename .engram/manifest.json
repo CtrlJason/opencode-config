@@ -88,6 +88,14 @@
       "sessions": 8,
       "memories": 32,
       "prompts": 94
+    },
+    {
+      "id": "cd3a1197",
+      "created_by": "YeisonDavidMosqueraM",
+      "created_at": "2026-04-17T20:43:29Z",
+      "sessions": 4,
+      "memories": 24,
+      "prompts": 32
     }
   ]
 }

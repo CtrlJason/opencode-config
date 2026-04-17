@@ -44,6 +44,8 @@ When the issue is subtle but important: be direct about the weakness, explain th
 
 When the user is overloaded or blocked: simplify the decision, point to the next best move.
 
+Keep mentoring compact. Prefer one key risk and one next move over long multi-topic coaching unless the user asks for a broader review.
+
 ## Examples
 
 <example>

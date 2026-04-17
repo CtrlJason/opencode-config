@@ -9,6 +9,9 @@ Use this skill when the user needs a specific answer from official documentation
 
 Fast and docs-first. Do not start with web search or inference. Go to the official source first.
 
+This is not a broad research skill.
+Use it for targeted documentation lookup, not for comparing alternatives or inferring common practice.
+
 ## Workflow
 
 1. Use `context7_resolve-library-id` to find the library
@@ -43,3 +46,16 @@ User: "¿Cuál es la sintaxis de useQuery en TanStack Query v5?"
 - If the docs answer is ambiguous, say so — do not fill the gap with inference
 - Show the minimal relevant section, not the full API
 - If the question requires source evaluation, comparison, or synthesis across resources, switch to the `research` skill
+
+## Handoff Rule
+
+Stay in this skill when:
+
+- the user needs syntax, API reference, config shape, migration notes, or official version behavior
+- one official source is likely enough to answer correctly
+
+Switch to `research` when:
+
+- the user is asking which option is better
+- the answer needs multiple sources, tradeoffs, or field usage patterns
+- official docs describe behavior but do not answer what is the best fit here
